@@ -1,4 +1,5 @@
 class Round < ApplicationRecord
   belongs_to :game
-  belongs_to :song
+  has_one :song
+  has_many :guest_guesses
 end

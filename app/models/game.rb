@@ -1,3 +1,5 @@
 class Game < ApplicationRecord
-  belongs_to :host_id
+  belongs_to :user
+  has_many :rounds
+  has_many :guests
 end
