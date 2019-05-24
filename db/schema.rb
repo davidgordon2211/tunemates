@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_131849) do
+ActiveRecord::Schema.define(version: 2019_05_24_153109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_131849) do
     t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
     t.index ["host_id"], name: "index_games_on_host_id"
   end
 
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_131849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "invited_user_id"
+    t.string "photo"
     t.index ["category_id"], name: "index_songs_on_category_id"
     t.index ["invited_user_id"], name: "index_songs_on_invited_user_id"
   end
