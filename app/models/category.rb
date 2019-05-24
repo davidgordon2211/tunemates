@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
   has_many :songs
-  belongs_to :guest_guesses
+  has_many :guest_guesses
 end

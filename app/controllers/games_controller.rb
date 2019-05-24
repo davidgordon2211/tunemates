@@ -21,4 +21,8 @@ class GamesController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def category
+    @category = Category.all
+    @category.sample(2)
+  end
 end
