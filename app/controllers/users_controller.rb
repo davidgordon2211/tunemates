@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :destroy]
+  before_action :find_user, only: [:home, :show, :edit, :destroy]
   def show
   end
 
   def edit
   end
+
+
+  # def home
+  #   @user = current_user
+  #   authorize @user
+  # end
 
   def update
     @user = current_user
