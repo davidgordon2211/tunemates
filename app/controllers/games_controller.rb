@@ -22,8 +22,11 @@ class GamesController < ApplicationController
   end
 
   def category
-    @category = Category.all
-    @category.sample(2)
+    @game = Game.find(params[:id])
+    authorize @game
+    @categories = Category.all.sample(2)
+
+    # @category.sample(2)
   end
 
   def song_selection

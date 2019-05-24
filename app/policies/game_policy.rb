@@ -13,4 +13,7 @@ class GamePolicy < ApplicationPolicy
     create?
   end
 
+  def category?
+    true
+  end
 end
