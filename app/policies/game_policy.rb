@@ -9,4 +9,8 @@ class GamePolicy < ApplicationPolicy
     true
   end
 
+  def lobby?
+    create?
+  end
+
 end

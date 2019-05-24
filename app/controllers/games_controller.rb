@@ -1,21 +1,24 @@
 class GamesController < ApplicationController
-  def show
-    # lobby
-    # anyone should be able to view/join the game
-    skip_pundit?
-  end
-
-  def new
-    # where you create a game (click +)
-    authorise @user
-  end
 
   def create
     # generate a link
-    authorise @user
+    @game = Game.new
+    authorize @game
+    @game.user = current_user
+    @game.save
+    redirect_to lobby_game_path(@game)
+  end
+
+  def lobby
+    @game = Game.find(params[:id])
+    authorize @game
   end
 
   def destroy
-    authorise @user
+    @game = Game.find(params[:id])
+    authorize @game
+    @game.destroy
+    redirect_to dashboard_path
   end
+
 end
