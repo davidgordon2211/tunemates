@@ -1,9 +1,10 @@
-<h1>Name of Game</h1>
-<br>
-<h2>Choose your songs</h2>
-<br>
-<h3>Category1 Name</h3>
-<br>
-<h3>Category2 Name</h3>
-<br>
-<input type="submit" value="Let's Play">
+<%= simple_form_for [@game, @song] do |f| %>
+        <%= f.input :title, label: 'Title'%>
+        <%= f.input :artist, label: 'Artist'%>
+        <%= f.input :photo %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+
+
+
+

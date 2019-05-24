@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
+  def show
+    @game = Game.find(params[:id])
+  end
 
   def create
     # generate a link
@@ -27,9 +30,10 @@ class GamesController < ApplicationController
   end
 
   def song_selection
-    @game = Game.find(params[:game_id])
+    @game = Game.find(params[:id])
     @song = Song.new
-    @category = Category.find(params[:category_id])
+    # @category = Category.find(params[:category_id])
     # song_selection view
+    authorize @game
   end
 end

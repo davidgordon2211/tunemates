@@ -1,10 +1,16 @@
 class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
-    # assign to guest @guest = Guest.find(params[:guest_id])
-    # assign to category @category = Category.find(params[:category_id])
+    @song.invited_user_id = current_user
+    @game = Game.find(params[:game_id])
+    # @song.game = @game
+    # create round with song and game
+    # raise
+    # @category = Category.find(params[:category_id])
+    # @song.category = @category
     @song.save
-    # redirect to game#show page
+    authorize @song
+    redirect_to game_path(@game)
   end
 
   private
