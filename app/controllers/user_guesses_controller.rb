@@ -1,0 +1,2 @@
+class UserGuessesController < ApplicationController
+end
