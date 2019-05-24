@@ -13,4 +13,8 @@ class GamePolicy < ApplicationPolicy
     create?
   end
 
+  def song_selection?
+    create?
+  end
+
 end

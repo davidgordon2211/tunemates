@@ -27,9 +27,10 @@ class GamesController < ApplicationController
   end
 
   def song_selection
-    @game = Game.find(params[:game_id])
+    @game = Game.find(params[:id])
+    authorize @game
     @song = Song.new
-    @category = Category.find(params[:category_id])
+    # @category = Category.find(params[:category_id])
     # song_selection view
   end
 end

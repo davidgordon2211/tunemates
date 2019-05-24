@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do
       get "lobby"
     end
+    member do
+      get "song_selection"
+    end
   end
   # post "dashboard", to: 'games#create' do
 

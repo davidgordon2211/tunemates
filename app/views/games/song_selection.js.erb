@@ -1,0 +1,20 @@
+const authorization = "Bearer BQDVWJvLGVTgayfnzbtz8HPfuH0nJMo1O70au903urI4JDzWWFhjT3vn54jmU7GwDFbtCCiUMiO5tL5An-7hcI5PkG5qliDzcbZNZOgNL5J0IEXFhxBMbtk7L_qVlXx5plzXnPZP3EXZbMftIz4RETLNjt5anHHChHIZSaVhOOTxlFCYx1g"
+
+const input = document.querySelector("#search");
+const results = document.querySelector("#results");
+
+input.addEventListener("keyup", (event) => {
+  results.innerHTML = '';
+  const apiUrl = `https://api.spotify.com/v1/search?q=${input.value}&type=track&limit=2`
+  fetch(apiUrl, { headers: {Authorization: authorization }})
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data.tracks.items)
+      data.tracks.items.forEach((track) => {
+        const newTrackName = `<li>${track.name}</li> <br>`;
+        results.insertAdjacentHTML("beforeend", newTrackName);
+      });
+    });
+});
+
+
