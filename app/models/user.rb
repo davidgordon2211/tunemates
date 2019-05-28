@@ -4,4 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :games, :foreign_key => 'host_id', class_name: "Game"
+  has_many :songs
+  has_many :user_guesses, :foreign_key => 'guesser_id', class_name: "User"
+  has_many :user_guesses, :foreign_key => 'submitter_id', class_name: "User"
 end
