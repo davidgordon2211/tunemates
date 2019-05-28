@@ -25,4 +25,9 @@
 
 
 </div>
-
+<%= simple_form_for [@game, @song] do |f| %>
+        <%= f.input :title, label: 'Title'%>
+        <%= f.input :artist, label: 'Artist'%>
+        <%= f.input :photo %>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
