@@ -1,4 +1,13 @@
-<h1>GAME</h1>
+<div class="container">
+  <h1>GAME</h1>
 
-<%= link_to "select songs", song_selection_game_path %>
-<%= link_to "View categories", category_game_path(@game) %>
+
+  <% @users.each do |user| %>
+      <%= link_to user.first_name, game_invited_users_path(@game, game_invited_user: {game_id: @game.id, user_id: user.id}), method: :post %>
+  <% end %>
+
+
+
+  <%= link_to "Select songs", song_selection_game_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %>
+</div>
