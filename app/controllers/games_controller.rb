@@ -33,8 +33,16 @@ class GamesController < ApplicationController
   end
 
   def song_selection
+
+    if params[:search].present?
+      @results = RSpotify::Track.search(params[:search])
+    else
+      @results = []
+    end
+
     @game = Game.find(params[:id])
     authorize @game
+
     @song = Song.new
     # @category = Category.find(params[:category_id])
     # song_selection view

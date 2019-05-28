@@ -23,3 +23,5 @@ module Tunemates
     # the framework and any gems in your application.
   end
 end
+
+RSpotify::authenticate("77b820f032ae413a8ac5dad827aa72d1", "8bab14c3a05d468dbfd3bd2718ccb202")
