@@ -14,7 +14,7 @@ class GamePolicy < ApplicationPolicy
   end
 
   def song_selection?
-    true
+    create?
   end
   
   def category?

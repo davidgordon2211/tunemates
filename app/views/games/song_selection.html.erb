@@ -1,10 +1,33 @@
+<div class="container">
+  <h1>Name of Game</h1>
+  <br>
+  <h2>Choose your songs</h2>
+  <br>
+  <h3>Category 1 Name</h3>
+  <br>
+
+  <input type="text" id="search" data-remote=true>
+  <br>
+
+  <ul id="results">
+    <li>this should disappear on textinput</li>
+  </ul>
+
+
+  <h3>Category 2 Name</h3>
+  <input type="text" id="search-2" data-remote=true>
+
+
+  <ul id="results-2">
+    <li>placeholder</li>
+  <br>
+
+
+
+</div>
 <%= simple_form_for [@game, @song] do |f| %>
         <%= f.input :title, label: 'Title'%>
         <%= f.input :artist, label: 'Artist'%>
         <%= f.input :photo %>
         <%= f.submit class: "btn btn-primary" %>
       <% end %>
-
-
-
-
