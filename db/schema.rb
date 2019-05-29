@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_153109) do
+ActiveRecord::Schema.define(version: 2019_05_28_105014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2019_05_24_153109) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "invited_user_id"
     t.string "photo"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_songs_on_category_id"
-    t.index ["invited_user_id"], name: "index_songs_on_invited_user_id"
+    t.index ["user_id"], name: "index_songs_on_user_id"
   end
 
   create_table "user_guesses", force: :cascade do |t|
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_153109) do
   add_foreign_key "rounds", "games"
   add_foreign_key "rounds", "songs"
   add_foreign_key "songs", "categories"
-  add_foreign_key "songs", "songs", column: "invited_user_id"
+  add_foreign_key "songs", "users"
   add_foreign_key "user_guesses", "categories"
   add_foreign_key "user_guesses", "invited_users", column: "guesser_id"
   add_foreign_key "user_guesses", "invited_users", column: "submitter_id"
