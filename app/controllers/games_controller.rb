@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
+    @songs = Song.all
   end
 
   def create
@@ -13,6 +14,7 @@ class GamesController < ApplicationController
   end
 
   def lobby
+    @users = User.all
     @game = Game.find(params[:id])
     authorize @game
   end
@@ -32,9 +34,22 @@ class GamesController < ApplicationController
     # @category.sample(2)
   end
 
+  def update
+  end
+
   def song_selection
+    #category is not currently being passed when the song saves
+    @cat1 = params[:category1]
+    # @cat2 = params[:category2]
+    if params[:search].present?
+      @results = RSpotify::Track.search(params[:search])
+    else
+      @results = []
+    end
+
     @game = Game.find(params[:id])
     authorize @game
+
     @song = Song.new
     # @category = Category.find(params[:category_id])
     # song_selection view

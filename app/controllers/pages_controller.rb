@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @invited_users = InvitedUser.all
   end
 end
