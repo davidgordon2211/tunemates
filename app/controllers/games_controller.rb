@@ -14,6 +14,7 @@ class GamesController < ApplicationController
   end
 
   def lobby
+    @users = User.all
     @game = Game.find(params[:id])
     authorize @game
   end
@@ -31,6 +32,9 @@ class GamesController < ApplicationController
     @categories = Category.all.sample(2)
 
     # @category.sample(2)
+  end
+
+  def update
   end
 
   def song_selection
