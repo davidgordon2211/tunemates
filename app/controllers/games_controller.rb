@@ -37,10 +37,7 @@ class GamesController < ApplicationController
   def update
   end
 
-  def song_selection
-    #category is not currently being passed when the song saves
-    @cat1 = params[:category1]
-    # @cat2 = params[:category2]
+  def song_selection1
     if params[:search].present?
       @results = RSpotify::Track.search(params[:search])
     else
@@ -48,10 +45,21 @@ class GamesController < ApplicationController
     end
 
     @game = Game.find(params[:id])
-    authorize @game
-
     @song = Song.new
     # @category = Category.find(params[:category_id])
     # song_selection view
+  end
+
+  def song_selection2
+    song_selection1
+  end
+
+
+  def save_categories
+    @game = Game.find(params[:id])
+    @game.category1_id = params[:category1]
+    @game.category2_id = params[:category2]
+    @game.save
+    redirect_to song_selection1_game_path(@game)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_105014) do
+ActiveRecord::Schema.define(version: 2019_05_29_103651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 2019_05_28_105014) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "status", default: false
+    t.bigint "category1_id"
+    t.bigint "category2_id"
+    t.index ["category1_id"], name: "index_games_on_category1_id"
+    t.index ["category2_id"], name: "index_games_on_category2_id"
     t.index ["host_id"], name: "index_games_on_host_id"
   end
 
@@ -91,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_105014) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "categories", column: "category1_id"
+  add_foreign_key "games", "categories", column: "category2_id"
   add_foreign_key "games", "users", column: "host_id"
   add_foreign_key "invited_users", "games"
   add_foreign_key "invited_users", "users"
