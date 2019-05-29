@@ -1,33 +1,37 @@
 <div class="container">
-  <h1>Name of Game</h1>
-  <br>
-  <h2>Choose your songs</h2>
-  <br>
-  <h3>Category 1 Name</h3>
-  <br>
+  <h3>Song search</h3>
 
-  <input type="text" id="search" data-remote=true>
-  <br>
+  <%= form_tag song_selection_game_path(@game), :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], category_1: params[:category_1] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
 
-  <ul id="results">
-    <li>this should disappear on textinput</li>
-  </ul>
-
-
-  <h3>Category 2 Name</h3>
-  <input type="text" id="search-2" data-remote=true>
-
-
-  <ul id="results-2">
-    <li>placeholder</li>
-  <br>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Image URL</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Spotify ID</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |song| %>
+        <tr>
+          <th scope="row"><%= song.name %></th>
+          <th> <%= image_tag song.album.images.third["url"] %> </th>
+          <th scope="row"><%= song.album.images.third["url"] %></th>
+          <td><%= song.artists.first.name %></td>
+          <td><%= song.uri %></td>
+          <td><%= link_to "Add", game_songs_path(game_id: params[:id], title: song.name, spotify_link: song.uri, artist: song.artists.first.name, photo: song.album.images.third["url"]), category_id: @cat1,  method: :post %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 
 </div>
-<%= simple_form_for [@game, @song] do |f| %>
-        <%= f.input :title, label: 'Title'%>
-        <%= f.input :artist, label: 'Artist'%>
-        <%= f.input :photo %>
-        <%= f.submit class: "btn btn-primary" %>
-      <% end %>

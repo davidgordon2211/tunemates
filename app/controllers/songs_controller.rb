@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   def create
+    raise
     @song = Song.new(song_params)
     @song.invited_user_id = current_user
     @game = Game.find(params[:game_id])
@@ -16,6 +17,6 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:spotify_link, :artist, :title)
+    params.permit(:spotify_link, :artist, :title, :photo, :category_id)
   end
 end
