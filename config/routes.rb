@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :games, only: [:new, :create, :show, :update] do
     member do
       get "lobby"
-      get "song_selection", to: "games#song_selection"
       get "category"
+      get "song_selection1", to: "games#song_selection1"
+      get "song_selection2", to: "games#song_selection2"
+      post "save_categories"
     end
     resources :songs, only: [:create]
     resources :invited_users, only: [:create]
