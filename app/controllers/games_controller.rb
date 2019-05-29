@@ -2,7 +2,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @rounds = Round.where(game_id: @game.id).where(finished: false)
-    @round = @rounds.sample
+    @round = @rounds.order(:created_at).first
+    # if @round.nil? redirect to score page else...
     @users = @game.invited_users
     @song = Song.where(id: @round.song_id).first
     @category1 = Category.where(id: @game.category1_id).first
