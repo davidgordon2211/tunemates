@@ -1,0 +1,5 @@
+meta_product_name: "tunemates."
+meta_title: "tunemates - the social music party game"
+meta_description: "a social music quiz game that asks you to select songs based on categories: you win by guessing whose songs and categories they belong to"
+meta_image: "group 4.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"

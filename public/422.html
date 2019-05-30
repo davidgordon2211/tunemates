@@ -1,67 +1,173 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <title></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+body {
+  height: 100%;
+  background: url('https://dl.dropboxusercontent.com/u/71557066/img/fallback.png') repeat scroll;
+}
+.not {
+  text-align: center;
+  writing-mode:tb-rl;
+  -webkit-transform:rotate(270deg);
+  -moz-transform:rotate(270deg);
+  -o-transform: rotate(270deg);
+  white-space:nowrap;
+  display:block;
+  margin-left: -13px;
+  font-weight:normal;
+  text-decoration: blink;
+  color: #fff;
+  text-shadow: 0 0 5px #f1c40f, 0 0 10px #f1c40f, 0 0 15px #f1c40f, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
+  letter-spacing: 5px;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.moth {
+    width:148px;/*148*/
+    height:83px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-74px;/*74*/
+    margin-top:-41.5px;
+    display: inline-block;
+    padding: 0;
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transition: top 1s linear, left 1s linear;
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+    -moz-transform-style: preserve-3d;
+    -moz-transform-origin: 50% 50%;
+    -moz-transition: top 1s linear, left 1s linear;
+
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    transition: top 1s linear, left 1s linear;
+}
+
+.wing {
+    width:72px;
+    height:83px;
+    margin-left:-4px;
+    padding: 0;
+    display:inline-block;
+
+  -webkit-animation: wing-animation 0.5s linear infinite;
+     -moz-animation: wing-animation 0.5s linear infinite;
+          animation: wing-animation 0.5s linear infinite;
+}
+
+.wing.left {
+    background: url("https://dl.dropboxusercontent.com/u/71557066/img/l-wing-b.png") no-repeat center center;
+
+    -webkit-transform-origin:right center;
+       -moz-transform-origin:right center;
+            transform-origin:right center;
+}
+.wing.right {
+    background: url("https://dl.dropboxusercontent.com/u/71557066/img/r-wing-b.png") no-repeat center center;
+
+    -webkit-transform-origin:left center;
+       -moz-transform-origin:left center;
+            transform-origin:left center;
+}
+
+@-webkit-keyframes nabpi-animation {
+  from {
+    -webkit-transform:translateZ(0);
   }
+  50% {
+    -webkit-transform:translateZ(100);
+  }
+  to {
+    -webkit-transform:translateZ(0);
+  }
+}
+
+@-webkit-keyframes wing-animation {
+  from {
+    -webkit-transform:rotateY(0deg);
+  }
+  60% {
+    -webkit-transform:rotateY(80deg);
+  }
+  to {
+    -webkit-transform:rotateY(0deg);
+  }
+}
+
+@-moz-keyframes wing-animation {
+  from {
+    -moz-transform:rotateY(0deg);
+  }
+  60% {
+    -moz-transform:rotateY(80deg);
+  }
+  to {
+    -moz-transform:rotateY(0deg);
+  }
+}
+
+@keyframes wing-animation {
+  from {
+    transform:rotateY(0deg);
+  }
+  60% {
+    transform:rotateY(80deg);
+  }
+  to {
+    transform:rotateY(0deg);
+  }
+}
+
+
+
   </style>
+  <script>
+    $(document).ready(function() {
+  var $moth = $('#moth');
+
+  $(document).on('mousemove', function(e) {
+
+    var mouseX = e.clientX,
+    mouseY = e.clientY;
+    mothP = $moth.position(),
+    mothX = mothP.left,
+    mothY = mothP.top,
+
+    $moth.css('left', mouseX+'px');
+    $moth.css('top', mouseY+'px');
+
+    var vx = mouseX-mothX,
+    vy = mouseY-mothY,
+    r = Math.sqrt(vx*vx + vy*vy),
+    cos = vx / r,
+    angle = Math.acos(cos)*180/Math.PI+90,
+    transform = '';
+
+    if (vy<0) angle = -angle+180;
+    transform+= 'rotateZ('+angle+'deg)';
+
+    $moth.css('-webkit-transform', transform).
+    css('-moz-transform', transform).
+    css('transform', transform);
+  });
+
+});
+  </script>
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  <div id="moth" class="moth">
+  <div class="not">402</div>
+  <div class="left wing"></div>
+  <div class="right wing"></div>
+</div>
+  <!-- This file lives in public/500.html -->
 </body>
 </html>
