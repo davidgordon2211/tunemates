@@ -1,5 +1,20 @@
-<h1>Welcome to the Game show page</h1>
+<h1>Welcome to the Game Show page</h1>
 
-<% @songs.each do |song| %>
-<p> <%= song.created_at %> </p>
+<%= image_tag @song.photo %>
+<%= @song.title %>
+<%= @song.artist %>
+
+<br>
+
+<%= @category1.name %>
+<br>
+<%= @category2.name %>
+
+<br>
+
+<% @users.each do |u| %>
+  <%= u.nickname %>
 <% end %>
+
+
+
