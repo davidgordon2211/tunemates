@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get "song_selection1", to: "games#song_selection1"
       get "song_selection2", to: "games#song_selection2"
       post "save_categories"
+      post "round_finished"
+      get "result"
     end
     resources :songs, only: [:create]
     resources :invited_users, only: [:create]
