@@ -17,10 +17,10 @@ categories = [
    {name: "Choose a song that you think should be the new national anthem 👏"},
    {name: "What song do you want to listen to while walking down the aisle at your wedding? 😍"},
    {name: "Choose your favorite 80s disco song 🕺"},
-   {name: "Which Kanye song best represents you? 👍"}
-   {name: "Which song reminds you of summer? 🌞"}
-   {name: "What song reminds you of your job? 👨"}
-   {name: "What song reminds you of school? 🎓"}
+   {name: "Which Kanye song best represents you? 👍"},
+   {name: "Which song reminds you of summer? 🌞"},
+   {name: "What song reminds you of your job? 👨"},
+   {name: "What song reminds you of school? 🎓"},
    {name: "What song would you choose to be the soundtrack of your life? 🎵"}
 
 ]
