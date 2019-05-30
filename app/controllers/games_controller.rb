@@ -46,12 +46,21 @@ class GamesController < ApplicationController
 
     @game = Game.find(params[:id])
     @song = Song.new
+    @category = Category.where(id: @game.category1_id).first
     # @category = Category.find(params[:category_id])
     # song_selection view
   end
 
   def song_selection2
-    song_selection1
+    if params[:search].present?
+      @results = RSpotify::Track.search(params[:search])
+    else
+      @results = []
+    end
+
+    @game = Game.find(params[:id])
+    @song = Song.new
+    @category = Category.where(id: @game.category2_id).first
   end
 
 
@@ -62,4 +71,31 @@ class GamesController < ApplicationController
     @game.save
     redirect_to song_selection1_game_path(@game)
   end
+
+  def round_finished
+    @user_guess = UserGuess.new
+    @user_guess.guesser = current_user
+    @invited_user = current_user
+    @round = Round.find(params[:round_id])
+    @category = Category.find(params[:category_id])
+    @song = Song.find(params[:song_id])
+    @user_guess.submitter = @song.user
+    if @user_guess.category == @round.song.category
+      @invited_user.score += 1
+    end
+    if @user_guess.submitter == @round.song.user
+      @invited_user.score += 1
+    end
+    @user_guess.save!
+    return @invited_user.score
+  end
+
+  def results
+    @invited_users = InvitedUser.all
+    @winner = InvitedUser.first_name.where(maximum: "score")
+  end
+
+  # In case methos for winner doesn't work, try this method =>
+  # variable = maximum(:value)
+  # where(:value => variable)
 end
