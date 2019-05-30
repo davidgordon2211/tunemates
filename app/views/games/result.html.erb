@@ -1,6 +1,9 @@
 <h1>Results</h1>
+<hr>
+<br>
 
 <% @invited_users.each do |user| %>
-  <%= user.nickname %> - <%= user.score %>
+  <h2><%= user.nickname %> - <%= user.score %></h2>
+  <br>
 <% end %>
 
