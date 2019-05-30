@@ -5,16 +5,44 @@
 <%= @song.artist %>
 
 <br>
-
-<%= @category1.name %>
 <br>
-<%= @category2.name %>
 
+
+
+
+
+
+<form action=<%="/games/#{@game.id}/round_finished"%> method="post">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token  %>
+<%= hidden_field_tag :round_id, @round.id  %>
+<%= hidden_field_tag :song_id, @song.id  %>
+<%= hidden_field_tag :category_1_id, @category1.id  %>
+<%= hidden_field_tag :category_2_id, @category2.id  %>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="category1" id="inlineCheckbox1" >
+  <label class="form-check-label" for="inlineCheckbox1"> <%= @category1.name %> </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="category2" id="inlineCheckbox2">
+  <label class="form-check-label" for="inlineCheckbox2"> <%= @category2.name %> </label>
+</div>
+
+<br>
 <br>
 
 <% @users.each do |u| %>
-  <%= u.nickname %>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name= "name" id=<%= u.nickname %> value= <%= u.nickname %> >
+    <label class="form-check-label" for=<%= u.nickname %>> <%= u.nickname %> </label>
+  </div>
+
 <% end %>
 
+<br>
+<br>
 
+
+<input type="submit" name="submit" class="inputButton" id="sendNewSms" value=" Send " />
+</form>
 
