@@ -84,7 +84,7 @@ class GamesController < ApplicationController
       @invited_user.score += 1
     end
     if @user_guess.submitter == @round.song.user
-      @invited.user.score += 1
+      @invited_user.score += 1
     end
     @user_guess.save!
     return @invited_user.score
@@ -93,7 +93,6 @@ class GamesController < ApplicationController
   def results
     @invited_users = InvitedUser.all
     @winner = InvitedUser.first_name.where(maximum: "score")
-
   end
 
   # In case methos for winner doesn't work, try this method =>
