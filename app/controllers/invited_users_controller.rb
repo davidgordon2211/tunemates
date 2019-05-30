@@ -19,8 +19,6 @@ class InvitedUsersController < ApplicationController
     @invited_user1.save
     if @game.save
       redirect_to lobby_game_path(@game)
-    else
-      raise
     end
   end
 end
