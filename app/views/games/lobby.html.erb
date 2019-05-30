@@ -1,13 +1,15 @@
+
+<h1 class="text-center"><%= @game.user.first_name.upcase %>'S' GAME</h1>
+<hr>
+<br>
 <div class="container">
-  <h1>GAME</h1>
+   <h2 class="text-center"><%= simple_form_for @game, :url => game_invited_users_path(@game), :method => :post do |f| %>
+     <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 200px;", multiple: true %>
+     <%= f.button :submit, class: "btn btn-info", value: "Invite your tunemates!" %></h2>
+   <% end %>
 
 
-  <% @users.each do |user| %>
-      <%= link_to user.first_name, game_invited_users_path(@game, game_invited_user: {game_id: @game.id, user_id: user.id}), method: :post %>
-  <% end %>
-
-
-
-  <%= link_to "Select songs", song_selection1_game_path, class: 'btn btn-primary mt-3' %>
-  <%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %>
+  <h2 class="text-center"><%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %></h2>
 </div>
+
+
