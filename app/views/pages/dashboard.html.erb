@@ -1,17 +1,20 @@
 <%#= simple_form_for(@game) do |f| %>
   <%#= f.submit "New game", class: 'btn btn-primary' %>
   <%# end %>
-<h1>Hi <%= current_user.first_name  %></h1>
-<%= link_to "new game", games_path, method: :post %>
-<br>
-<hr>
 
-<% @invited_users.each do |invited_user| %>
-  <% if invited_user.user == current_user %>
-    <h2><%= invited_user.game.user.first_name %> has invited you to a game!</h2>
-      <%= link_to "Accept Invitation", lobby_game_path(invited_user.game) %>
-      <br>
-      <%= link_to "Reject Invitation", dashboard_path %>
-      <hr>
-    <% end %>
-<% end %>
+<div class="container">
+  <h1>Hi <%= current_user.first_name  %></h1>
+  <%= link_to "new game", games_path, method: :post %>
+  <br>
+  <hr>
+
+  <% @invited_users.each do |invited_user| %>
+    <% if invited_user.user == current_user %>
+      <h2><%= invited_user.game.user.first_name %> has invited you to a game!</h2>
+        <%= link_to "Accept Invitation", lobby_game_path(invited_user.game) %>
+        <br>
+        <%= link_to "Reject Invitation", dashboard_path %>
+        <hr>
+      <% end %>
+  <% end %>
+</div>

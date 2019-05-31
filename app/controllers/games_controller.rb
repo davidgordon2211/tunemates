@@ -60,8 +60,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category1_id).first
-    # @category = Category.find(params[:category_id])
-    # song_selection view
   end
 
   def song_selection2
@@ -75,7 +73,6 @@ class GamesController < ApplicationController
     @song = Song.new
     @category = Category.where(id: @game.category2_id).first
   end
-
 
   def save_categories
     @game = Game.find(params[:id])
@@ -118,28 +115,8 @@ class GamesController < ApplicationController
   end
 
   def game_finished
-    # @user_guess = UserGuess.new
-    # @user_guess.guesser = current_user
-    # @invited_user = current_user
-    # @round = Round.find(params[:round_id])
-    # @category = Category.find(params[:category_id])
-    # # @song = Song.find(params[:song_id])
-
-    # @user_guess.submitter = @song.user
-    # if @user_guess.category == @round.song.category
-    #   @invited_user.score += 1
-    # end
-    # if @user_guess.submitter == @round.song.user
-    #   @invited_user.score += 1
-    # end
-    # @user_guess.save!
-    # return @invited_user.score
     @user = current_user
     @game.status = true
-    @user.songs.each do |song|
-      song = nil
-    end
-    # raise
   end
 
   def result

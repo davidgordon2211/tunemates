@@ -17,6 +17,19 @@ class InvitedUsersController < ApplicationController
     @invited_user1.nickname = current_user.first_name
     @invited_user1.game = @game
     @invited_user1.save
-
+    if @game.save
+      redirect_to lobby_game_path(@game)
+    end
+    # if @invited_user.save || invited_user1.save
+    #   respond_to do |format|
+    #     format.html { redirect_to dashboard_path }
+    #     format.js # <-- this will render corresponding js file
+    #   end
+    # else
+    #   respond_to do |format|
+    #     format.html { redirect_to lobby_game_path(@game) }
+    #     format.js
+    #   end
+    # end
   end
 end
