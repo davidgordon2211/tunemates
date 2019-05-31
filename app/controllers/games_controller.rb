@@ -87,30 +87,30 @@ class GamesController < ApplicationController
     @user_guess = UserGuess.new
     @user_guess.guesser = current_user
     # @invited_user = current_user
-    @invited_user = InvitedUser.where(user_id: current_user).first
+    @invited_user = InvitedUser.find_by(user_id: current_user, game: @game)
     @round = Round.find(params[:round_id])
     @user_guess.round = @round
-    if params[category1: "on"]
+    if params[:category1] == "on"
       @category = Category.find(params[:category_1_id])
-      else
+    else
       @category = Category.find(params[:category_2_id])
     end
     @user_guess.category = @category
     # @song = Song.find(params[:song_id])
-    @song = Song.where(id: @round.song_id).first
+    @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
+    @song = Song.find_by(id: @round.song_id)
     # @round.song = @song_id
-    @user_guess.submitter = @song.user
-    if @category.id == @song.category
-      @invited_user.score += 1
-    end
-    if @user_guess.submitter == @song.user
-      @invited_user.score += 1
+    # @user_guess.submitter = @song.user
+    if @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
+      @invited_user.score += 10
+    elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
+      @invited_user.score += 5
     end
     @user_guess.save!
-    @invited_user.save!
     # return @invited_user.score
     @round.finished = true
     @round.save
+    @invited_user.save!
     redirect_to game_path(@game)
   end
 

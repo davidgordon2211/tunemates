@@ -10,12 +10,14 @@ class InvitedUsersController < ApplicationController
       @invited_user.user_id = @user.id
       @invited_user.game = @game
       @invited_user.nickname = @user.first_name
+      @invited_user.score = 0
       @invited_user.save
     end
     @invited_user1 = InvitedUser.new
     @invited_user1.user = current_user
     @invited_user1.nickname = current_user.first_name
     @invited_user1.game = @game
+    @invited_user1.score = 0
     @invited_user1.save
     if @game.save
       redirect_to lobby_game_path(@game)
