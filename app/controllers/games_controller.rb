@@ -117,6 +117,7 @@ class GamesController < ApplicationController
   def game_finished
     @user = current_user
     @game.status = true
+    @game.save
   end
 
   def result
