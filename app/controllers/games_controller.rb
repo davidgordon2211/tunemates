@@ -6,6 +6,7 @@ class GamesController < ApplicationController
     @rounds = Round.where(game_id: @game.id).where(finished: false)
     if @rounds.empty?
       redirect_to result_game_path(@game)
+      game_finished
     else
       @round = @rounds.order(:created_at).first
       @users = @game.invited_users
@@ -26,6 +27,7 @@ class GamesController < ApplicationController
 
   def lobby
     @users = User.all
+    @user = current_user
     @game = Game.find(params[:id])
     authorize @game
   end
@@ -58,8 +60,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category1_id).first
-    # @category = Category.find(params[:category_id])
-    # song_selection view
   end
 
   def song_selection2
@@ -74,13 +74,12 @@ class GamesController < ApplicationController
     @category = Category.where(id: @game.category2_id).first
   end
 
-
   def save_categories
     @game = Game.find(params[:id])
     @game.category1_id = params[:category1]
     @game.category2_id = params[:category2]
     @game.save
-    redirect_to song_selection1_game_path(@game)
+    redirect_to lobby_game_path(@game)
   end
 
   def round_finished
@@ -113,6 +112,11 @@ class GamesController < ApplicationController
     @round.save
     @invited_user.save!
     redirect_to game_path(@game)
+  end
+
+  def game_finished
+    @user = current_user
+    @game.status = true
   end
 
   def result
