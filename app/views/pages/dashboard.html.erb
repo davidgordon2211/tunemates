@@ -9,7 +9,7 @@
   <hr>
 
   <% @invited_users.each do |invited_user| %>
-    <% if invited_user.user == current_user %>
+    <% if invited_user.user == current_user && invited_user.game.status == false %>
       <h2><%= invited_user.game.user.first_name %> has invited you to a game!</h2>
         <%= link_to "Accept Invitation", lobby_game_path(invited_user.game) %>
         <br>
