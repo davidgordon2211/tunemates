@@ -17,8 +17,6 @@ class InvitedUsersController < ApplicationController
     @invited_user1.nickname = current_user.first_name
     @invited_user1.game = @game
     @invited_user1.save
-    if @game.save
-      redirect_to lobby_game_path(@game)
-    end
+
   end
 end

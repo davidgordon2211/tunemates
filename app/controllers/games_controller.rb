@@ -6,6 +6,7 @@ class GamesController < ApplicationController
     @rounds = Round.where(game_id: @game.id).where(finished: false)
     if @rounds.empty?
       redirect_to result_game_path(@game)
+      game_finished
     else
       @round = @rounds.order(:created_at).first
       @users = @game.invited_users
@@ -26,6 +27,7 @@ class GamesController < ApplicationController
 
   def lobby
     @users = User.all
+    @user = current_user
     @game = Game.find(params[:id])
     authorize @game
   end
@@ -80,7 +82,7 @@ class GamesController < ApplicationController
     @game.category1_id = params[:category1]
     @game.category2_id = params[:category2]
     @game.save
-    redirect_to song_selection1_game_path(@game)
+    redirect_to lobby_game_path(@game)
   end
 
   def round_finished
@@ -115,27 +117,30 @@ class GamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
-
-
   def game_finished
-    @user_guess = UserGuess.new
-    @user_guess.guesser = current_user
-    @invited_user = current_user
-    @round = Round.find(params[:round_id])
-    @category = Category.find(params[:category_id])
-    # @song = Song.find(params[:song_id])
+    # @user_guess = UserGuess.new
+    # @user_guess.guesser = current_user
+    # @invited_user = current_user
+    # @round = Round.find(params[:round_id])
+    # @category = Category.find(params[:category_id])
+    # # @song = Song.find(params[:song_id])
 
-    @user_guess.submitter = @song.user
-    if @user_guess.category == @round.song.category
-      @invited_user.score += 1
+    # @user_guess.submitter = @song.user
+    # if @user_guess.category == @round.song.category
+    #   @invited_user.score += 1
+    # end
+    # if @user_guess.submitter == @round.song.user
+    #   @invited_user.score += 1
+    # end
+    # @user_guess.save!
+    # return @invited_user.score
+    @user = current_user
+    @game.status = true
+    @user.songs.each do |song|
+      song = nil
     end
-    if @user_guess.submitter == @round.song.user
-      @invited_user.score += 1
-    end
-    @user_guess.save!
-    return @invited_user.score
+    # raise
   end
-
 
   def result
     @game = Game.find(params[:id])

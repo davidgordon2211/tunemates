@@ -1,9 +1,12 @@
-<h1>Results</h1>
-<hr>
-<br>
-
-<% @invited_users.each do |user| %>
-  <h2><%= user.nickname %> - <%= user.score %></h2>
+<div class="container">
+  <h1>Results</h1>
+  <hr>
   <br>
-<% end %>
 
+  <% @invited_users.each do |user| %>
+    <h2><%= user.nickname %> - <%= user.score %></h2>
+    <br>
+  <% end %>
+
+  <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
+</div>
