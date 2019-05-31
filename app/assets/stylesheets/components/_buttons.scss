@@ -8,8 +8,28 @@
   // position: relative;
   min-width: 15rem;
   max-width: 90vw;
+  text-decoration: none;
   // overflow: hidden;
   border: 0;
+  cursor: pointer;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+}
+
+.button-grey {
+  // background: white;
+  color: black;
+  border: 2px solid gray;
+  font-weight: 900;
+  // padding: 1.25rem 2rem;
+  font-size: 0.25rem;
+  border-radius: 25px;
+  text-align: center;
+  // position: relative;
+  min-width: 5rem;
+  max-width: 90vw;
+  text-decoration: none;
+  // overflow: hidden;
   cursor: pointer;
   // text-transform: uppercase;
   // letter-spacing: 0.05em;

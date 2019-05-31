@@ -1,20 +1,43 @@
-<%#= simple_form_for(@game) do |f| %>
-  <%#= f.submit "New game", class: 'btn btn-primary' %>
-  <%# end %>
-
 <div class="container">
-  <h1>Hi <%= current_user.first_name  %></h1>
-  <%= link_to "new game", games_path, method: :post %>
-  <br>
+  <div class="top-header">
+    <h3>tunemates.</h3>
+  <h2>Hi <%= current_user.first_name %> 👋</h2>
+  </div>
   <hr>
 
-  <% @invited_users.each do |invited_user| %>
-    <% if invited_user.user == current_user && invited_user.game.status == false %>
-      <h2><%= invited_user.game.user.first_name %> has invited you to a game!</h2>
-        <%= link_to "Accept Invitation", lobby_game_path(invited_user.game) %>
-        <br>
-        <%= link_to "Reject Invitation", dashboard_path %>
-        <hr>
+  <div class="cards">
+    <%= link_to games_path, method: :post do %>
+
+    <div class="card-game">
+      <div class="new-game-image">
+      </div>
+      <div class="card-game-info">
+        <div>
+          <h2>New Game</h2>
+        </div>
+        <h2><i class="far fa-plus-square"></i></h2>
+      </div>
       <% end %>
-  <% end %>
+    </div>
+
+  <!-- real cards start here -->
+
+    <% @invited_users.each do |invited_user| %>
+      <% if invited_user.user == current_user && invited_user.game.status == false %>
+      <%= link_to lobby_game_path(invited_user.game) do %>
+        <div class="card-game">
+          <div class=<%= @cards.sample %>>
+          </div>
+        <div class="card-game-info">
+          <div>
+            <h2><%= invited_user.game.user.first_name %>'s Game</h2>
+            <p>You've been invited to play!</p>
+          </div>
+          <p class="button-grey">Lobby</p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

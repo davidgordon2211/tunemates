@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @invited_users = InvitedUser.all
+    @cards = ["game-image-red", "game-image-blue", "game-image-purple", "game-image-yellow"]
   end
 end

@@ -1,21 +1,16 @@
 // Specific CSS for your home-page
 
 .home {
-
   background: linear-gradient(180deg, #fa2b57, #f7ca2f);
   background-size: 400% 400%;
   height: 100vh;
   text-align: center;
   display: flex;
-
   align-items: center;
   color: white;
-
-
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
-
 }
 
 @-webkit-keyframes AnimationName {
