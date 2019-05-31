@@ -18,6 +18,7 @@
 <%= hidden_field_tag :song_id, @song.id  %>
 <%= hidden_field_tag :category_1_id, @category1.id  %>
 <%= hidden_field_tag :category_2_id, @category2.id  %>
+
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" name="category1" id="inlineCheckbox1" >
   <label class="form-check-label" for="inlineCheckbox1"> <%= @category1.name %> </label>
@@ -33,7 +34,7 @@
 <% @users.each do |u| %>
 
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" name= "name" id=<%= u.nickname %> value= <%= u.nickname %> >
+    <input class="form-check-input" type="checkbox" name= "name" value=<%= u.nickname %>>
     <label class="form-check-label" for=<%= u.nickname %>> <%= u.nickname %> </label>
   </div>
 <% end %>
