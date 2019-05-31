@@ -1,0 +1,10 @@
+function insertNickname(nickname) {
+  var container = document.querySelector(".nicknames");
+  var html = `<div>${nickname}</div>`;
+  container.insertAdjacentHTML("beforeend", html);
+}
+
+<% @game.invited_users.each do |user| %>
+
+  insertNickname('<%= user.nickname %>');
+<% end %>
