@@ -4,6 +4,13 @@
 <%= @song.title %>
 <%= @song.artist %>
 
+<div id="countdown">
+  <div id="countdown-number"></div>
+  <svg>
+    <circle r="18" cx="20" cy="20"></circle>
+  </svg>
+</div>
+
  <%=  audio_tag(@song.spotify_link, autoplay: true, controls: false) %>
 
 <br>
@@ -45,4 +52,17 @@
 <script>
   function doSubmit() { document.getElementById('guess').submit(); }
   window.setTimeout(doSubmit, 30000);
+</script>
+
+<script>
+  var countdownNumberEl = document.getElementById('countdown-number');
+  var countdown = 1;
+
+  countdownNumberEl.textContent = countdown;
+
+  setInterval(function() {
+    countdown = --countdown <= 0 ? 30 : countdown;
+
+    countdownNumberEl.textContent = countdown;
+  }, 1000);
 </script>
