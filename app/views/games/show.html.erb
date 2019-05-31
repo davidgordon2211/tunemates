@@ -4,15 +4,19 @@
 <%= @song.title %>
 <%= @song.artist %>
 
+<div id="countdown">
+  <div id="countdown-number"></div>
+  <svg>
+    <circle r="18" cx="20" cy="20"></circle>
+  </svg>
+</div>
+
+ <%=  audio_tag(@song.spotify_link, autoplay: true, controls: false) %>
+
 <br>
 <br>
 
-
-
-
-
-
-<form action=<%="/games/#{@game.id}/round_finished"%> method="post">
+<form action=<%="/games/#{@game.id}/round_finished"%> method="post" id="guess" name="guess" data-remote="true">
 <%= hidden_field_tag :authenticity_token, form_authenticity_token  %>
 <%= hidden_field_tag :round_id, @round.id  %>
 <%= hidden_field_tag :song_id, @song.id  %>
@@ -42,6 +46,23 @@
 <br>
 
 
-<input type="submit" name="submit" class="inputButton" id="sendNewSms" value=" Send " />
+<!-- <input type="submit" name="submit" class="inputButton" id="sendNewSms" value=" Send " /> -->
 </form>
 
+<script>
+  function doSubmit() { document.getElementById('guess').submit(); }
+  window.setTimeout(doSubmit, 30000);
+</script>
+
+<script>
+  var countdownNumberEl = document.getElementById('countdown-number');
+  var countdown = 1;
+
+  countdownNumberEl.textContent = countdown;
+
+  setInterval(function() {
+    countdown = --countdown <= 0 ? 30 : countdown;
+
+    countdownNumberEl.textContent = countdown;
+  }, 1000);
+</script>
