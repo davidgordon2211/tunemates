@@ -3,10 +3,20 @@
 <br>
 <div class="container">
    <h2 class="text-center"><%= simple_form_for @game, :url => game_invited_users_path(@game), :method => :post do |f| %>
-     <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 200px;", multiple: true %>
-     <%= f.button :submit, class: "btn btn-info", value: "Invite your tunemates!" %></h2>
+     <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 200px;", multiple: true, remote: true %>
+     <%= f.button :submit, id: 'simple-form-submit', class: "btn btn-info", value: "Invite your tunemates!" %></h2>
    <% end %>
 
 
-  <h2 class="text-center"><%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %></h2>
+  </ul>
+   <h2 class="text-center"><%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %></h2>
+
+
+  <% if !@game.category1_id.nil? || !@game.category2_id.nil?  %>
+    <h2 class="text-center"><%= link_to "Select songs", song_selection1_game_path(@game), class: 'btn btn-primary mt-3' %></h2>
+  <% end %>
+
+  <% if @game.rounds.count >= 2 %>
+    <h2 class="text-center"><%= link_to "Start playing", game_path(@game), class: 'btn btn-primary mt-3' %></h2>
+  <% end %>
 </div>

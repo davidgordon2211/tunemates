@@ -12,7 +12,7 @@ class SongsController < ApplicationController
       @round.song_id = @song.id
       if @round.save
         if @song.category_id == @game.category2_id
-          redirect_to game_path(@game)
+          redirect_to lobby_game_path(@game)
         else
           redirect_to song_selection2_game_path(@game)
         end
