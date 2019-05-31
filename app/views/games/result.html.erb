@@ -1,12 +1,16 @@
-<div class="container">
-  <h1>Results</h1>
-  <hr>
-  <br>
+<h1>Results</h1>
+<hr>
+<br>
 
-  <% @invited_users.each do |user| %>
-    <h2><%= user.nickname %> - <%= user.score %></h2>
-    <br>
-  <% end %>
-
+<h2><strong><%= @invited_users.reverse.first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
+<br>
+<h2>He got an incredible <strong><%= @invited_users.reverse.first.score %> points</strong> because he knows his friends so well!</h2>
+<br>
+<hr>
+<h2>Runners Up Table</h2>
+<br>
+<% @invited_users.reverse.drop(1).each_with_index do |user, index| %>
+  <h3><%= index +2 %>. <%= user.nickname %> - <%= user.score %></h3>
+<br>
+<% end %>
   <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
-</div>
