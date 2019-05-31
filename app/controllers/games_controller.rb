@@ -123,6 +123,7 @@ class GamesController < ApplicationController
   def result
     @game = Game.find(params[:id])
     @invited_users = InvitedUser.where(game: @game)
+    @invited_users.order(score: :desc)
     # @winner = InvitedUser.nickname.where(maximum: "score")
   end
 
