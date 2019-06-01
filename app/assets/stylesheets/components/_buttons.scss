@@ -1,3 +1,43 @@
+.button-red {
+  background: #FA2B57;
+  color: white;
+  font-weight: 900;
+  padding: 1.25rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 3.5rem / 100%;
+  // position: relative;
+  // min-width: 15rem;
+  // max-width: 90vw;
+  width: 100%;
+  text-decoration: none;
+  // overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.button-blue {
+  background: #00BCD3;
+  color: white;
+  font-weight: 900;
+  padding: 1.25rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 3.5rem / 100%;
+  // position: relative;
+  // min-width: 15rem;
+  // max-width: 90vw;
+  width: 100%;
+  text-decoration: none;
+  // overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
 .button-white {
   background: white;
   color: black;
@@ -33,4 +73,24 @@
   cursor: pointer;
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
+}
+
+.button-yellow {
+  background: #F7CA2F;
+  color: white;
+  font-weight: 700;
+  padding: 1.25rem 2rem;
+  font-size: 1rem;
+  border-radius: 3.5rem / 100%;
+  // position: relative;
+  // min-width: 15rem;
+  // max-width: 90vw;
+  width: 80%;
+  text-decoration: none;
+  // overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }

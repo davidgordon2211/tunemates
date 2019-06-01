@@ -1,7 +1,7 @@
 <div class="container">
   <div class="top-header">
-    <h3>tunemates.</h3>
-  <h2>Hi <%= current_user.first_name %> 👋</h2>
+    <%= link_to "tunemates.", dashboard_path, class: 'h3' %>
+    <h2>Hi <%= current_user.first_name %> <span class="wave">👋</span></h2>
   </div>
   <hr>
 
@@ -56,7 +56,7 @@
 
 </div>
 
-<script>
+<!-- <script>
 
 // MIT license
 // By @nodws with github.com/greensock/GreenSock-JS, see more examples at greensock.com/examples-showcases
@@ -276,4 +276,4 @@
 
 
 
-</script>
+</script> -->
