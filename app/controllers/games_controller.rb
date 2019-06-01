@@ -43,6 +43,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @categories = Category.all.sample(2)
+    @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
 
     # @category.sample(2)
   end

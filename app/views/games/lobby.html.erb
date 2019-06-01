@@ -15,20 +15,21 @@
        <% end %>
     </div>
     <div class="ctas">
-      <div class="text-center">
-        <%= link_to "View categories", category_game_path(@game), class: 'button-red' %>
-      </div>
+      <% if @game.category1_id.nil? || @game.category2_id.nil? %>
+        <div class="text-center m-4">
+          <%= link_to "View categories", category_game_path(@game), class: 'button-red' %>
+        </div>
+      <% end %>
 
-
-      <% if !@game.category1_id.nil? || !@game.category2_id.nil? %>
+      <% if !@game.category1_id.nil? && @game.rounds.count < 6 %>
         <div>
-          <h2 class="text-center"><%= link_to "Select songs", song_selection1_game_path(@game), class: 'button-blue' %></h2>
+          <h2 class="text-center mt-5"><%= link_to "Select songs", song_selection1_game_path(@game), class: 'button-blue' %></h2>
         </div>
       <% end %>
 
       <% if @game.rounds.count >= 2 %>
         <div>
-          <h2 class="text-center"><%= link_to "Start playing", game_path(@game), class: 'button-red' %></h2>
+          <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red' %></h2>
         </div>
       <% end %>
     </div>
