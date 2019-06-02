@@ -1,7 +1,51 @@
+#game {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.players-box {
+  display: flex;
+  // justify-content: space-between
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.categories-box {
+  // display: flex;
+  // justify-content: space-between
+  // flex-wrap: wrap;
+  // margin: 20px 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.track-info {
+  display: grid;
+  grid-template-columns: auto 5rem;
+  grid-gap: 8px;
+}
+
+.hide {
+  visibility: hidden;
+  position: absolute;
+  // left: -500px;
+}
+
+.center-game {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ // countdown timer
+
 #countdown {
   position: relative;
   margin: auto;
-  margin-top: 100px;
+  // margin-top: 100px;
   height: 40px;
   width: 40px;
   text-align: center;
@@ -39,4 +83,24 @@ svg circle {
   to {
     stroke-dashoffset: 113px;
   }
+}
+
+// category guesses
+
+.category-guess-red {
+  background: linear-gradient(180deg, #fa2b57, #f7ca2f);
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  padding: 15px;
 }
