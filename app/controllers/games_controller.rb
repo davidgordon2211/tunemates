@@ -101,7 +101,9 @@ class GamesController < ApplicationController
     @song = Song.find_by(id: @round.song_id)
     # @round.song = @song_id
     # @user_guess.submitter = @song.user
-    if @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
+    if current_user == @song.user
+      @invited_user.score += 0
+    elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
       @invited_user.score += 5
@@ -123,7 +125,6 @@ class GamesController < ApplicationController
   def result
     @game = Game.find(params[:id])
     @invited_users = InvitedUser.where(game: @game)
-    @invited_users.order(score: :desc)
     # @winner = InvitedUser.nickname.where(maximum: "score")
   end
 
