@@ -1,9 +1,11 @@
-<div class="container" style="height: 100vh;">
+<div class="container" style="height: 100vh; display: flex; flex-direction: column; align-content: space-between;">
   <div class="top-header">
     <h2>Your categories are...</h2>
   </div>
   <hr>
-  <div class="text-center">
+  <br>
+  <br>
+  <div class="text-center" style="display: flex; flex-direction: column; justify-content: center; height: 100% - 90px; align-self: stretch; ">
     <% @categories.each do |category| %>
       <div>
         <div class=<%= @colours.sample %> >
@@ -12,8 +14,10 @@
       </div>
     <% end %>
     <br>
-    <%= link_to "Reshuffle", category_game_path(@game), class: 'btn btn-light' %>
-    <%= link_to "Accept and continue", save_categories_game_path(params[:id], category1: @categories.first.id, category2: @categories.second.id ),   method: :post, class: 'btn btn-danger' %>
+    <div>
+    <%= link_to "Reshuffle", category_game_path(@game), class: 'btn btn-light', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2);" %>
+    <%= link_to "Accept 👉", save_categories_game_path(params[:id], category1: @categories.first.id, category2: @categories.second.id ),   method: :post, class: 'btn btn-danger', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2);" %>
+    </div>
   </div>
 
 
