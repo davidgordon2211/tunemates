@@ -6,6 +6,15 @@
      <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 200px;", multiple: true %>
      <%= f.button :submit, id: 'simple-form-submit', class: "btn btn-info", value: "Invite your tunemates!" %></h2>
    <% end %>
+
+  <div class="text-center">
+    <ul style="list-style-type:none;">
+    <% @game.invited_users.each do |user| %>
+      <li><%= user.nickname %></li>
+    <% end %>
+    </ul>
+  </div>
+
    <h2 class="text-center"><%= link_to "View categories", category_game_path(@game), class: 'btn btn-primary mt-3' %></h2>
 
 
