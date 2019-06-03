@@ -100,13 +100,13 @@ class GamesController < ApplicationController
       @category = Category.find(params[:category_2_id])
     end
     @user_guess.category = @category
+    @song = Song.find_by(id: @round.song_id)
     # @song = Song.find(params[:song_id])
     if current_user == @song.user
       @user_guess.submitter = current_user
     else
       @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
     end
-    @song = Song.find_by(id: @round.song_id)
     # @round.song = @song_id
     # @user_guess.submitter = @song.user
     if current_user == @song.user
