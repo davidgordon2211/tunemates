@@ -1,17 +1,30 @@
 <%= render 'shared/navbar' %>
-<h1>Results</h1>
-<hr>
-<br>
+  <div id="confettis">
+  <h1>Results</h1>
+  <hr>
+  <br>
 
-<h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
-<br>
-<h2>He got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because he knows his friends so well!</h2>
-<br>
-<hr>
-<h2>Runners Up Table</h2>
-<br>
-<% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
-  <h3><%= index +2 %>. <%= user.nickname %> - <%= user.score %></h3>
-<br>
-<% end %>
-  <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
+  <h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
+  <br>
+  <h2>He got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because he knows his friends so well!</h2>
+  <br>
+  <hr>
+  <h2>Runners Up Table</h2>
+  <br>
+  <% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
+    <h3><%= index +2 %>. <%= user.nickname %> - <%= user.score %></h3>
+  <br>
+  <% end %>
+    <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+
+  <!-- <iframe src="https://open.spotify.com/embed/track/1lCRw5FEZ1gPDNPzy1K4zW" width="300" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media", autoplay="true"></iframe> -->
+
+<div id="player" class="center-game" style= "margin-top: 5px; margin-bottom: 5px;">
+  <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: true) %>
+</div>
