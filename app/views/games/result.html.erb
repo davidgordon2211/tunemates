@@ -4,9 +4,9 @@
   <hr>
   <br>
 
-  <h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
+  <h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!🍾🎵🥳🎉🏆</strong></h2>
   <br>
-  <h2>He got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because he knows his friends so well!</h2>
+  <h2> <%= @invited_users.order(score: :desc).first.nickname.upcase %> got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because they know their friends so well! 😉 </h2>
   <br>
   <hr>
   <h2>Runners Up Table</h2>
@@ -16,6 +16,7 @@
   <br>
   <% end %>
     <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
+    <%= link_to "Play a new game?", dashboard_path, class: 'btn btn-primary'%>
     <br>
     <br>
     <br>
