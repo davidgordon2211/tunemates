@@ -8,13 +8,24 @@
   <br>
   <div class="lobby-box">
     <div>
-      <h2 class="text-center nicknames"><%= simple_form_for @game, :url => game_invited_users_path(@game), remote: true, :method => :post do |f| %>
+      <% if @game.category1_id.nil? || @game.category2_id.nil?  %>
+        <h2 class="text-center nicknames"><%= simple_form_for @game, :url => game_invited_users_path(@game), remote: true, :method => :post do |f| %>
 
         <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 278px;", multiple: true %>
 
           <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px;", value: "Invite your tunemates!" %></h2>
        <% end %>
+      <% end %>
     </div>
+    
+     <div class="text-center">
+      <ul style="list-style-type:none;">
+      <% @game.invited_users.each do |user| %>
+        <li><%= user.nickname %></li>
+      <% end %>
+      </ul>
+    </div>
+    
     <div class="ctas">
       <% if current_user == @game.user %>
         <% if @game.category1_id.nil? || @game.category2_id.nil? %>
