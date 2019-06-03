@@ -1,0 +1,12 @@
+#confettis {
+  height: 50%;
+  // position: absolute;
+}
+
+.confetti {
+  height: 10px;
+  width: 10px;
+  background: lightgray;
+  position: absolute;
+  transition: transform .5s linear;
+}

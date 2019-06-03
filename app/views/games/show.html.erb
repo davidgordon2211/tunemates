@@ -19,32 +19,33 @@
             </svg>
           </div>
        </div>
-       <hr style="margin: 5px;">
-       <div id="players-container">
-                <form action=<%="/games/#{@game.id}/round_finished"%> method="post" id="guess" name="guess" data-remote="true">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token  %>
-        <%= hidden_field_tag :round_id, @round.id  %>
-        <%= hidden_field_tag :song_id, @song.id  %>
-        <%= hidden_field_tag :category_1_id, @category1.id  %>
-        <%= hidden_field_tag :category_2_id, @category2.id  %>
-        <!-- comment out lines 30 / 31 appropriately for testing -->
-        <%# if current_user == 0 %>
-        <% if current_user == @song.user %>
-          <div class="text-center m-3">
-            <h3>This is your song, no need to answer</h3>
-            <br>
-            <h3>Just look as if you are still trying to guess 😉</h3>
-          </div>
-        <% else %>
-        <h6>Who chose this track?</h6>
-          <div class="players-box">
-            <div>
-                <% @users.each do |u| %>
-                  <input class="hide" id=<%= u.nickname %> type="checkbox" name= "name" value=<%= u.nickname %>>
-                  <label class=<%= @playercolours.sample %> for=<%= u.nickname %>>
-                    <%= u.nickname %>
-                  </label>
-                <% end %>
+
+     <hr style="margin: 5px;">
+     <div id="players-container">
+              <form action=<%="/games/#{@game.id}/round_finished"%> method="post" id="guess" name="guess" data-remote="true">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token  %>
+      <%= hidden_field_tag :round_id, @round.id  %>
+      <%= hidden_field_tag :song_id, @song.id  %>
+      <%= hidden_field_tag :category_1_id, @category1.id  %>
+      <%= hidden_field_tag :category_2_id, @category2.id  %>
+      <!-- comment out lines 30 / 31 appropriately for testing -->
+      <%# if current_user == 0 %>
+      <% if current_user == @song.user %>
+        <div class="text-center m-3">
+          <h3>This is your song, no need to answer</h3>
+          <br>
+          <h3>Just look as if you are still trying to guess 😉</h3>
+        </div>
+      <% else %>
+      <h6>Who chose this track?</h6>
+        <div class="players-box">
+          <div>
+              <% @users.each do |u| %>
+                <input class="hide" id=<%= u.nickname %> type="checkbox" name= "name" value=<%= u.nickname %>>
+                <label class="in-game-player-button-<%= u.user.color %>" for=<%= u.nickname %>>
+                  <%= u.nickname %>
+                </label>
+              <% end %>
             </div>
           </div>
         </div>
