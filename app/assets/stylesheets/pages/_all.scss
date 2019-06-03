@@ -3,6 +3,11 @@ a {
   color: black;
 }
 
+.top-cont {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
 a:active {
   text-decoration: none;
   // color: black

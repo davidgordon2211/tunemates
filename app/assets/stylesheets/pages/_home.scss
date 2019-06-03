@@ -4,6 +4,7 @@
   background: linear-gradient(180deg, #fa2b57, #f7ca2f);
   background-size: 400% 400%;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   text-align: center;
   display: flex;
   align-items: center;

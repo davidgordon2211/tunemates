@@ -1,4 +1,4 @@
-const categories = [ ".category-guess-red", ".category-guess-purple", ".category-guess-blue", ".category-guess-yellow", ".in-game-player-button-blue", ".in-game-player-button-yellow", ".in-game-player-button-purple", ".in-game-player-button-green", ".in-game-player-button-red", ]
+const categories = [ ".category-guess-red", ".category-guess-purple", ".category-guess-blue", ".category-guess-yellow", ".in-game-player-button-Blue", ".in-game-player-button-Yellow", ".in-game-player-button-Purple", ".in-game-player-button-Green", ".in-game-player-button-Red", ]
 
 const turnActive = (categories) => {
   categories.forEach((category) => {
