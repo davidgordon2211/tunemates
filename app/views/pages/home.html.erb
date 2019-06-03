@@ -1,19 +1,100 @@
-<div class="home">
 
-  <div class="container">
-    <div>
-      <%= image_tag "logo.svg", class: "logo"%>
-      <h1><b>tunemates.</b></h1>
-      <h3>the social music party game</h3>
-      <br>
-      <br>
-      <br>
-      <br>
+<div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#mycarousel" data-slide-to="0" role="button" data-slide="next"class="active"></li>
+    <li data-target="#mycarousel" data-slide-to="1" role="button" data-slide="next"></li>
+    <li data-target="#mycarousel" data-slide-to="2"></li>
+    <li data-target="#mycarousel" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
 
-      <div style= "padding-top: 35px;">
-        <%= link_to "Let's Play", new_user_session_path, class: 'button-white' %>
-      </div>
+      <div class="home">
+
+          <div class="container">
+            <div>
+              <%= image_tag "logo.svg", class: "logo"%>
+              <h1><b>tunemates.</b></h1>
+              <h3>the social music party game</h3>
+              <br>
+              <br>
+              <br>
+              <br>
+
+              <div style= "padding-top: 35px;">
+                <%= link_to "Let's Play", new_user_session_path, class: 'button-white' %>
+              </div>
+            </div>
+          </div>
+
+        </div>
     </div>
-  </div>
+    <div class="carousel-item">
+     <div class="home-2">
+
+      <div class="container">
+              <div>
+                <%= image_tag "logo.svg", class: "logo"%>
+                <h1><b>tunemates.</b></h1>
+                <h3>invite friends to join your game</h3>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div style= "padding-top: 35px;">
+                  <%= link_to "Let's Play", new_user_session_path, class: 'button-white' %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="home-3">
+
+          <div class="container">
+                  <div>
+                    <%= image_tag "logo.svg", class: "logo"%>
+                    <h1><b>tunemates.</b></h1>
+                    <h3>choose categories and assign each a song</h3>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <div style= "padding-top: 35px;">
+                      <%= link_to "Let's Play", new_user_session_path, class: 'button-white' %>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="carousel-item">
+       <div class="home-4">
+
+        <div class="container">
+              <div>
+                <%= image_tag "logo.svg", class: "logo"%>
+                <h1><b>tunemates.</b></h1>
+                <h3>guess whose songs and categories they belong to</h3>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div style= "padding-top: 35px;">
+                  <%= link_to "Let's Play", new_user_session_path, class: 'button-white' %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+
 
 </div>
