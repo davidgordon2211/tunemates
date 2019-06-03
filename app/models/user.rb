@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :invited_users
   has_many :user_guesses, :foreign_key => 'guesser_id', class_name: "User"
   has_many :user_guesses, :foreign_key => 'submitter_id', class_name: "User"
+  mount_uploader :photo, PhotoUploader
 end
