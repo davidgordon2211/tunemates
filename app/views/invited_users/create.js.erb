@@ -1,6 +1,6 @@
 function insertNickname(nickname) {
   var container = document.querySelector(".nicknames");
-  var html = `<div><p><span class=player-button-<%= user.user.color %>> ${nickname}</span><p></div>`;
+  var html = `<div><p><span class="player-button-<%= user.user.color %>"> ${nickname}</span><p></div>`;
   container.insertAdjacentHTML("beforeend", html);
 }
 
