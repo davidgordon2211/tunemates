@@ -4,13 +4,20 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @rounds = Round.where(game_id: @game.id).where(finished: false)
+    # @rounds.shuffle
     @catcolours = ["category-guess-red", "category-guess-purple", "category-guess-blue", "category-guess-yellow"]
     @playercolours = ["in-game-player-button-red", "in-game-player-button-blue", "in-game-player-button-yellow", "in-game-player-button-purple", "in-game-player-button-green"]
     if @rounds.empty?
       redirect_to result_game_path(@game)
       game_finished
     else
-      @round = @rounds.order(:created_at).first
+      # order by position
+      @round = @rounds.order(:position).first
+      # @round = @rounds.order(:created_at).first
+      # @round = @rounds.order(song_id: :desc).first
+      # @round = @rounds.order(:songs_spotify_link_DESC).first
+      # @round = @rounds.order('songs.spotify_link DESC').first
+
       @users = @game.invited_users
       @song = Song.where(id: @round.song_id).first
       @category1 = Category.where(id: @game.category1_id).first
@@ -28,7 +35,7 @@ class GamesController < ApplicationController
   end
 
   def lobby
-    @colours = [ "player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
+    @colours = ["player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
     @users = User.all
     @user = current_user
     @game = Game.find(params[:id])
