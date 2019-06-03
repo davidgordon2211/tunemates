@@ -1,15 +1,16 @@
+<%= render 'shared/navbar' %>
 <h1>Results</h1>
 <hr>
 <br>
 
-<h2><strong><%= @invited_users.first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
+<h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!!!!!!!!!!!!!!!!!!!🍾🎵🥳🎉🏆</strong></h2>
 <br>
-<h2>He got an incredible <strong><%= @invited_users.first.score %> points</strong> because he knows his friends so well!</h2>
+<h2>He got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because he knows his friends so well!</h2>
 <br>
 <hr>
 <h2>Runners Up Table</h2>
 <br>
-<% @invited_users.drop(1).each_with_index do |user, index| %>
+<% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
   <h3><%= index +2 %>. <%= user.nickname %> - <%= user.score %></h3>
 <br>
 <% end %>

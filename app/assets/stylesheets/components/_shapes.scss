@@ -1,0 +1,232 @@
+// html,body{
+//   margin:0;
+//   overflow:hidden;
+//   height:100%
+// }
+
+  .large-header {
+  background:#fff;
+    text-align:center
+  }
+#x-canvas{
+  opacity:0.5
+}
+
+.boxFont {
+  font-family: "helvetica", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  line-height: 0.3;
+  letter-spacing: -.05em;
+  font-size: 3rem;
+  color: #e6007e;
+}
+
+// a { text-decoration: none; color: #e6007e; }
+// a:visited { text-decoration: none; color: #e6007e; }
+// a:hover { text-decoration: none; color: #e6007e; }
+// a:focus { text-decoration: none; color: #e6007e; }
+// a:hover, a:active { text-decoration: none; color: #e6007e; }
+
+.box {
+  position: relative;
+  // width: 100%;
+  // height: 100px;
+  overflow: hidden;
+  background: white;
+  height: 100px;
+  width: 100%;
+  border-bottom: 2px dotted gray;
+}
+
+.ball1 {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FA2B57;
+  position: absolute;
+  -webkit-animation: moveX 6.45s ease-in-out 0s infinite alternate, moveY 7.4s ease-in-out 0s infinite alternate;
+  -moz-animation: moveX 6.45s ease-in-out 0s infinite alternate, moveY 7.4s ease-in-out 0s infinite alternate;
+  -o-animation: moveX 6.04s ease-in-out 0s infinite alternate, moveY 7.4s ease-in-out 0s infinite alternate;
+  animation: moveX 6.45s ease-in-out 0s infinite alternate, moveY 7.4s ease-in-out 0s infinite alternate;
+}
+
+.ball2 {
+  display: block;
+  width: 50px;
+  height: 50px;
+  horizontal-anchor: center;
+  border-radius: 50%;
+  background-color: #00BCD3;
+  position: absolute;
+  -webkit-animation: moveX 11.45s ease-in-out 0s infinite alternate, moveY 9.4s ease-in-out 0s infinite alternate;
+  -moz-animation: moveX 11.45s ease-in-out 0s infinite alternate, moveY 9.4s ease-in-out 0s infinite alternate;
+  -o-animation: moveX 11.04s ease-in-out 0s infinite alternate, moveY 9.4s ease-in-out 0s infinite alternate;
+  animation: moveX 11.45s ease-in-out 0s infinite alternate, moveY 9.4s ease-in-out 0s infinite alternate;
+}
+
+.ball2:hover {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+
+.ball3 {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #5EAB7F;
+  position: absolute;
+  -webkit-animation: moveX 8.15s linear 0s infinite alternate, moveY 5.8s linear 0s infinite alternate;
+  -moz-animation: moveX 8.15s linear 0s infinite alternate, moveY 5.8s linear 0s infinite alternate;
+  -o-animation: moveX 8.15s linear 0s infinite alternate, moveY 5.8s linear 0s infinite alternate;
+  animation: moveX 8.15s linear 0s infinite alternate, moveY 5.8s linear 0s infinite alternate;
+}
+
+.ball4 {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #F7CA2F;
+  position: absolute;
+  -webkit-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  -moz-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  -o-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+}
+
+.ball4 {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #F7CA2F;
+  position: absolute;
+  -webkit-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  -moz-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  -o-animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+  animation: moveX 10.09s linear 0s infinite alternate, moveY 9.4s linear 0s infinite alternate;
+}
+
+.ball5 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #BE89E8;
+  position: absolute;
+  -webkit-animation: moveX 13.09s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+  -moz-animation: moveX 13.09s linear 0s infinite alternate, moveY 14.4s linear 0s infinite alternate;
+  -o-animation: moveX 13.09s linear 0s infinite alternate, moveY 14.4s linear 0s infinite alternate;
+  animation: moveX 13.09s linear 0s infinite alternate, moveY 14.4s linear 0s infinite alternate;
+}
+
+.square1 {
+  display: block;
+  width: 45px;
+  height: 45px;
+  background-color: #C4C4C4;
+  position: absolute;
+  -webkit-animation: moveX 12.34s linear 0s infinite alternate, moveY 15.06s linear 0s infinite alternate, spin 40000ms linear 0s infinite alternate;
+  -moz-animation: moveX 12.34s linear 0s infinite alternate, moveY 15.06s linear 0s infinite alternate, spin 40000ms linear 0s infinite alternate;
+  -o-animation: moveX 12.34s linear 0s infinite alternate, moveY 15.06s linear 0s infinite alternate, spin 40000ms linear 0s infinite alternate;
+  animation: moveX 12.34s linear 0s infinite alternate, moveY 15.06s linear 0s infinite alternate, spin 40000ms linear 0s infinite alternate;
+
+}
+
+.square2 {
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-color: #FA2B57;
+  position: absolute;
+  -webkit-animation: moveX 9.74s linear 0s infinite alternate, moveY 20.06s linear 0s infinite alternate, spin 50000ms linear 0s infinite alternate;
+  -moz-animation: moveX 9.34s linear 0s infinite alternate, moveY 20.06s linear 0s infinite alternate, spin 50000ms linear 0s infinite alternate;
+  -o-animation: moveX 9.34s linear 0s infinite alternate, moveY 20.06s linear 0s infinite alternate, spin 50000ms linear 0s infinite alternate;
+  animation: moveX 9.34s linear 0s infinite alternate, moveY 20.06s linear 0s infinite alternate, spin 50000ms linear 0s infinite alternate;
+
+}
+
+.square3 {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #00BCD3;
+  position: absolute;
+  -webkit-animation: moveX 19.74s linear 0s infinite alternate, moveY 17.06s linear 0s infinite alternate, spin 63000ms linear 0s infinite alternate;
+  -moz-animation: moveX 19.34s linear 0s infinite alternate, moveY 17.06s linear 0s infinite alternate, spin 63000ms linear 0s infinite alternate;
+  -o-animation: moveX 19.34s linear 0s infinite alternate, moveY 17.06s linear 0s infinite alternate, spin 63000ms linear 0s infinite alternate;
+  animation: moveX 19.34s linear 0s infinite alternate, moveY 17.06s linear 0s infinite alternate, spin 63000ms linear 0s infinite alternate;
+
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-left: 75px solid #5EAB7F;
+    position: absolute;
+  -webkit-animation: moveX 30.74s linear 0s infinite alternate, moveY 25.06s linear 0s infinite alternate, spin 75300ms linear 0s infinite alternate;
+  -moz-animation: moveX 30.34s linear 0s infinite alternate, moveY 25.06s linear 0s infinite alternate, spin 75300ms linear 0s infinite alternate;
+  -o-animation: moveX 30.34s linear 0s infinite alternate, moveY 25.06s linear 0s infinite alternate, spin 75300ms linear 0s infinite alternate;
+  animation: moveX 30.34s linear 0s infinite alternate, moveY 25.06s linear 0s infinite alternate, spin 75300ms linear 0s infinite alternate;
+}
+
+.triangle2 {
+  width: 0;
+  height: 0;
+  border-top: 43px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 65px solid #F7CA2F;
+    position: absolute;
+  -webkit-animation: moveX 24.34s linear 0s infinite alternate, moveY 16.06s linear 0s infinite alternate, spin 55300ms linear 0s infinite alternate;
+  -moz-animation: moveX 24.34s linear 0s infinite alternate, moveY 16.06s linear 0s infinite alternate, spin 55300ms linear 0s infinite alternate;
+  -o-animation: moveX 24.34s linear 0s infinite alternate, moveY 16.06s linear 0s infinite alternate, spin 55300ms linear 0s infinite alternate;
+  animation: moveX 24.34s linear 0s infinite alternate, moveY 16.06s linear 0s infinite alternate, spin 55300ms linear 0s infinite alternate;
+}
+
+
+/* 2.2 Keyframes for Floating Geometry  */
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform:rotate(0deg);
+      }
+
+    to {
+        -webkit-transform:rotate(360deg);
+      }
+}
+
+@-webkit-keyframes moveX {
+  from { left: 0; } to { left: 100%; }
+}
+@-moz-keyframes moveX {
+  from { left: 0; } to { left: 100%; }
+}
+@-o-keyframes moveX {
+  from { left: 0; } to { left: 100%; }
+}
+@keyframes moveX {
+  from { left: 0; } to { left: 100%; }
+}
+@-webkit-keyframes moveY {
+  from { top: 0; } to { top: 100%; }
+}
+@-moz-keyframes moveY {
+  from { top: 0; } to { top: 100%; }
+}
+@-o-keyframes moveY {
+  from { top: 0; } to { top: 100%; }
+}
+@keyframes moveY {
+  from { top: 0; } to { top: 100%; }
+}

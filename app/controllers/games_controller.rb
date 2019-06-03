@@ -4,6 +4,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @rounds = Round.where(game_id: @game.id).where(finished: false)
+    @catcolours = ["category-guess-red", "category-guess-purple", "category-guess-blue", "category-guess-yellow"]
+    @playercolours = ["in-game-player-button-red", "in-game-player-button-blue", "in-game-player-button-yellow", "in-game-player-button-purple", "in-game-player-button-green"]
     if @rounds.empty?
       redirect_to result_game_path(@game)
       game_finished
@@ -43,6 +45,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @categories = Category.all.sample(2)
+    @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
 
     # @category.sample(2)
   end
@@ -101,7 +104,9 @@ class GamesController < ApplicationController
     @song = Song.find_by(id: @round.song_id)
     # @round.song = @song_id
     # @user_guess.submitter = @song.user
-    if @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
+    if current_user == @song.user
+      @invited_user.score += 0
+    elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
       @invited_user.score += 5
@@ -123,7 +128,6 @@ class GamesController < ApplicationController
   def result
     @game = Game.find(params[:id])
     @invited_users = InvitedUser.where(game: @game)
-    @invited_users.order(score: :desc)
     # @winner = InvitedUser.nickname.where(maximum: "score")
   end
 

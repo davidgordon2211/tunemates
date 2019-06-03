@@ -21,16 +21,18 @@ class InvitedUsersController < ApplicationController
     @invited_user1.save
     @game.save
 
+    @colours = [ "player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
+
     if @invited_user.save || invited_user1.save
       respond_to do |format|
         # format.html { redirect_to dashboard_path }
         format.js # <-- this will render corresponding js file
       end
-    else
-      respond_to do |format|
-        # format.html { redirect_to lobby_game_path(@game) }
-        format.js
-      end
+    # else
+    #   respond_to do |format|
+    #     # format.html { redirect_to lobby_game_path(@game) }
+    #     format.js
+    #   end
     end
   end
 end
