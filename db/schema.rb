@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_134739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "finished", default: false
+    t.integer "position"
     t.index ["game_id"], name: "index_rounds_on_game_id"
     t.index ["song_id"], name: "index_rounds_on_song_id"
   end

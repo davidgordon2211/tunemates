@@ -13,7 +13,7 @@
 
         <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 278px;", multiple: true %>
 
-          <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px;", value: "Invite your tunemates!" %></h2>
+          <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px; width: 278px", value: "Invite your tunemates!" %></h2>
        <% end %>
       <% end %>
     </div>
