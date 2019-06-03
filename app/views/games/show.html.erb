@@ -1,19 +1,90 @@
+<div class="container" style="height: 100vh;">
+  <div id="game">
+    <div id="artwork" class="center-game mt-3">
+      <%= image_tag @song.photo %>
+    </div>
+    <div id="player" class="center-game" style= "margin-top: 5px; margin-bottom: 5px;">
+      <%=  audio_tag(@song.spotify_link, autoplay: true, controls: true) %>
+    </div>
+     <div class="track-info">
+       <div class="track-meta">
+        <h5><%= @song.title %></h5>
+        <h6 style= "color: #C4C4C4"><%= @song.artist %></h6>
+       </div>
+       <div id="countdown">
+          <div id="countdown-number"></div>
+          <svg>
+          <circle r="18" cx="20" cy="20"></circle>
+          </svg>
+        </div>
+     </div>
+     <hr style="margin: 5px;">
+     <div id="players-container">
+              <form action=<%="/games/#{@game.id}/round_finished"%> method="post" id="guess" name="guess" data-remote="true">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token  %>
+      <%= hidden_field_tag :round_id, @round.id  %>
+      <%= hidden_field_tag :song_id, @song.id  %>
+      <%= hidden_field_tag :category_1_id, @category1.id  %>
+      <%= hidden_field_tag :category_2_id, @category2.id  %>
+      <h6>Who chose this track?</h6>
+      <div class="players-box">
+          <div class="form-group">
+              <% @users.each do |u| %>
+                <input class="hide" id=<%= u.nickname %> type="checkbox" name= "name" value=<%= u.nickname %>>
+                <label class=<%= @playercolours.sample %> for=<%= u.nickname %>>
+                  <%= u.nickname %>
+                </label>
+              <% end %>
+          </div>
+      </div>
+     </div>
+     <div class="categories-container">
+      <h6>Which category?</h6>
+       <div class="categories-box text-center">
+        <!-- <div class="row"> -->
+         <!--  <div class="col-xs-6"> -->
+          <!-- <div class="col-xs-6"> -->
+            <div>
+            <input class="hide" type="checkbox" name="category1" id="inlineCheckbox1" >
+            <label class=<%= @catcolours.sample %> for="inlineCheckbox1">
+              <%= @category1.name %>
+            </label>
+            </div>
+          <!--   </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+          <!-- <div class="col-xs-6"> -->
+            <!-- <div class="col-xs-6"> -->
+              <div>
+            <input class="hide" type="checkbox" name="category2" id="inlineCheckbox2">
+            <label class=<%= @catcolours.sample %> for="inlineCheckbox2">
+              <%= @category2.name %>
+            </label>
+            </div>
+          <!-- </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+       </div>
+     </div>
+
+    </form>
+  </div>
+
+</div>
+
+<!-- <input type="submit" name="submit" class="inputButton" id="sendNewSms" value=" Send " />
+
 <h1>Welcome to the Game Show page</h1>
 
 <%= image_tag @song.photo %>
 <%= @song.title %>
-<%= @song.artist %>
+<%= @song.artist %> -->
 
-<div id="countdown">
-  <div id="countdown-number"></div>
-  <svg>
-    <circle r="18" cx="20" cy="20"></circle>
-  </svg>
-</div>
 
- <%=  audio_tag(@song.spotify_link, autoplay: true, controls: true) %>
 
-<br>
+<!--  <%=  audio_tag(@song.spotify_link, autoplay: true, controls: true) %> -->
+
+<!-- <br>
 <br>
 
 <form action=<%="/games/#{@game.id}/round_finished"%> method="post" id="guess" name="guess" data-remote="true">
@@ -36,7 +107,6 @@
 <br>
 
 <% @users.each do |u| %>
-
   <div class="form-check form-check-inline">
     <input class="form-check-input" type="checkbox" name= "name" value=<%= u.nickname %>>
     <label class="form-check-label" for=<%= u.nickname %>> <%= u.nickname %> </label>
@@ -47,8 +117,7 @@
 <br>
 
 
-<!-- <input type="submit" name="submit" class="inputButton" id="sendNewSms" value=" Send " /> -->
-</form>
+</form> -->
 
 <script>
   function doSubmit() { document.getElementById('guess').submit(); }
