@@ -101,13 +101,16 @@ class GamesController < ApplicationController
     end
     @user_guess.category = @category
     # @song = Song.find(params[:song_id])
-    @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
+    if current_user == @song.user
+      @user_guess.submitter = current_user
+    else
+      @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
+    end
     @song = Song.find_by(id: @round.song_id)
     # @round.song = @song_id
     # @user_guess.submitter = @song.user
     if current_user == @song.user
       @invited_user.score += 0
-      @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
     elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
