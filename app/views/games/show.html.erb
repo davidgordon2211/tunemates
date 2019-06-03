@@ -26,8 +26,11 @@
       <%= hidden_field_tag :song_id, @song.id  %>
       <%= hidden_field_tag :category_1_id, @category1.id  %>
       <%= hidden_field_tag :category_2_id, @category2.id  %>
+      <% if current_user == @song.user %>
+        <h1>This is your song. No need to answer</h1>
+      <% else %>
       <h6>Who chose this track?</h6>
-      <div class="players-box">
+        <div class="players-box">
           <div class="form-group">
               <% @users.each do |u| %>
                 <input class="hide" id=<%= u.nickname %> type="checkbox" name= "name" value=<%= u.nickname %>>
@@ -36,31 +39,32 @@
                 </label>
               <% end %>
           </div>
+        </div>
       </div>
-     </div>
-     <div class="categories-container">
-      <h6>Which category?</h6>
+      <div class="categories-container">
+        <h6>Which category?</h6>
        <div class="categories-box text-center">
         <!-- <div class="row"> -->
          <!--  <div class="col-xs-6"> -->
           <!-- <div class="col-xs-6"> -->
-            <div>
-            <input class="hide" type="checkbox" name="category1" id="inlineCheckbox1" >
-            <label class=<%= @catcolours.sample %> for="inlineCheckbox1">
-              <%= @category1.name %>
-            </label>
-            </div>
+        <div>
+          <input class="hide" type="checkbox" name="category1" id="inlineCheckbox1" >
+          <label class=<%= @catcolours.sample %> for="inlineCheckbox1">
+            <%= @category1.name %>
+          </label>
+          </div>
           <!--   </div> -->
           <!-- </div> -->
         <!-- </div> -->
           <!-- <div class="col-xs-6"> -->
             <!-- <div class="col-xs-6"> -->
-              <div>
+          <div>
             <input class="hide" type="checkbox" name="category2" id="inlineCheckbox2">
             <label class=<%= @catcolours.sample %> for="inlineCheckbox2">
               <%= @category2.name %>
             </label>
-            </div>
+          </div>
+      <% end %>
           <!-- </div> -->
           <!-- </div> -->
         <!-- </div> -->
