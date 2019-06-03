@@ -21,7 +21,7 @@
      <div class="text-center">
       <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <p><span class=<%= @colours.sample %>><%= user.nickname %></span></p>
+        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
       <% end %>
       <!-- </ul> -->
     </div>

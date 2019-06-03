@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
+  resources :users, only: [:show, :edit, :update, :destroy]
   resources :games, only: [:new, :create, :show, :update] do
     member do
       get "lobby"
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     end
     resources :songs, only: [:create]
     resources :invited_users, only: [:create]
+
   end
   # post "dashboard", to: 'games#create' do
 

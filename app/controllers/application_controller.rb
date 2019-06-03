@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :photo, :color])
   end
 
   # after_action :verify_authorized, except: [ :index, :home ], unless: :skip_pundit?
