@@ -107,6 +107,7 @@ class GamesController < ApplicationController
     # @user_guess.submitter = @song.user
     if current_user == @song.user
       @invited_user.score += 0
+      @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
     elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
