@@ -3,14 +3,13 @@ class SongsController < ApplicationController
     @game = Game.find(params[:game_id])
     @song = Song.new(song_params)
     @song.user = current_user
-    # assign to guest @guest = Guest.find(params[:guest_id])
-    # assign to category @category = Category.find(params[:category_id])
     if @song.save!
       @round = Round.new
       @round.game = @game
       @round.save!
       @round.song_id = @song.id
       if @round.save
+        set_round_order
         if @song.category_id == @game.category2_id
           redirect_to lobby_game_path(@game)
         else
@@ -22,10 +21,25 @@ class SongsController < ApplicationController
     else
       redirect_to song_selection1_game_path(@game)
     end
-    # redirect to game#show page
   end
 
   private
+
+  def array_up_to(i)
+    # this returns an array with range
+    (1..i).to_a
+  end
+
+  def set_round_order
+    round_count = @game.rounds.count
+    # making an array from 0 to @game.rounds.count
+    position_array = array_up_to(round_count)
+    position_array.shuffle!
+    # iterating over shuffled array and assign the num to a round
+    position_array.each do |position|
+      @round[:position] = position
+    end
+  end
 
   def song_params
     params.permit(:spotify_link, :artist, :title, :photo, :category_id)
