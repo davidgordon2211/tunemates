@@ -16,10 +16,12 @@
        <% end %>
     </div>
     <div class="ctas">
-      <% if @game.category1_id.nil? || @game.category2_id.nil? %>
-        <div class="text-center m-4">
-          <%= link_to "View categories", category_game_path(@game), class: 'button-red' %>
-        </div>
+      <% if current_user == @game.user %>
+        <% if @game.category1_id.nil? || @game.category2_id.nil? %>
+          <div class="text-center m-4">
+            <%= link_to "View categories", category_game_path(@game), class: 'button-red' %>
+          </div>
+        <% end %>
       <% end %>
 
       <% if !@game.category1_id.nil? && @game.rounds.count < 6 %>
