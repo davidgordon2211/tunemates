@@ -2,10 +2,12 @@
 <hr>
 <br>
 <div class="container">
+  <% if @game.category1_id.nil? || @game.category2_id.nil?  %>
    <h2 class="text-center nicknames"><%= simple_form_for @game, :url => game_invited_users_path(@game), remote: true, :method => :post do |f| %>
      <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2", style: "width: 200px;", multiple: true %>
      <%= f.button :submit, id: 'simple-form-submit', class: "btn btn-info", value: "Invite your tunemates!" %></h2>
    <% end %>
+  <% end %>
 
   <div class="text-center">
     <ul style="list-style-type:none;">
