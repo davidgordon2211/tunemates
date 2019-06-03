@@ -17,15 +17,15 @@
        <% end %>
       <% end %>
     </div>
-    
+
      <div class="text-center">
-      <ul style="list-style-type:none;">
+      <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <li><%= user.nickname %></li>
+        <p><span class=<%= @colours.sample %>><%= user.nickname %></span></p>
       <% end %>
-      </ul>
+      <!-- </ul> -->
     </div>
-    
+
     <div class="ctas">
       <% if current_user == @game.user %>
         <% if @game.category1_id.nil? || @game.category2_id.nil? %>

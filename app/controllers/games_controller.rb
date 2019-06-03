@@ -28,6 +28,7 @@ class GamesController < ApplicationController
   end
 
   def lobby
+    @colours = [ "player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
     @users = User.all
     @user = current_user
     @game = Game.find(params[:id])
