@@ -1,31 +1,80 @@
 <%= render 'shared/navbar' %>
   <div id="confettis">
-  <h1>Results</h1>
-  <hr>
-  <br>
+    <div class="container">
+      <h1>Results</h1>
+      <hr>
+      <br>
 
-  <h2><strong><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!🍾🎵🥳🎉🏆</strong></h2>
-  <br>
-  <h2> <%= @invited_users.order(score: :desc).first.nickname.upcase %> got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because they know their friends so well! 😉 </h2>
-  <br>
-  <hr>
-  <h2>Runners Up Table</h2>
-  <br>
-  <% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
-    <h3><%= index +2 %>. <%= user.nickname %> - <%= user.score %></h3>
-  <br>
-  <% end %>
-    <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
-    <%= link_to "Play a new game?", dashboard_path, class: 'btn btn-primary'%>
-    <br>
-    <br>
-    <br>
-</div>
+      <strong><h2><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!</h2><h2>🍾🎵🥳🎉🏆</h2></strong>
+
+      <br>
+      <h2> <%= @invited_users.order(score: :desc).first.nickname.capitalize %> got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because they know their friends so well! 😉 </h2>
+      <br>
+      <hr>
+      <h2>Runners Up Table</h2>
+      <br>
+      <% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
+        <h3><%= index +2 %>. <%= user.nickname.capitalize %> - <%= user.score %></h3>
+      <br>
+      <% end %>
+        <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
+        <%= link_to "Play a new game?", dashboard_path, class: 'btn btn-primary'%>
+        <br>
+        <br>
+        <br>
+
 
 
 
   <!-- <iframe src="https://open.spotify.com/embed/track/1lCRw5FEZ1gPDNPzy1K4zW" width="300" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media", autoplay="true"></iframe> -->
 
-<div id="player" class="center-game" style= "margin-top: 5px; margin-bottom: 5px;">
-  <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: true) %>
-</div>
+      <div id="player" class="center-game" style= "margin-top: 5px; margin-bottom: 5px;">
+        <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: true) %>
+      </div>
+    </div>
+  </div>
+
+<script>
+var minChar = 10;
+var maxChar = 18;
+
+var heading = document.getElementsByTagName('h2')[0];
+var arr = heading.innerHTML.split('');
+heading.innerHTML = null;
+
+var c = [];
+
+for (var i = 0; i < arr.length; i++){
+  var elm = document.createElement('span');
+  elm.innerHTML = arr[i];
+  heading.appendChild(c[i] = elm);
+
+  c[i].addEventListener("transitionend", function(e) {
+    var el = e.srcElement;
+    if (e.propertyName === 'font-size'){
+      var oldsize = parseInt(el.style.fontSize);
+      el.style.fontSize = random(minChar,maxChar)+'vw';
+      if (oldsize === parseInt(el.style.fontSize)){
+        el.style.fontSize = oldsize+1+'vw';
+      }
+      el.style.color = rgbR();
+      var s = random(200,800)/1000;
+      el.style.transition = 'font-size '+s+'s, color 1s';
+    }
+  });
+}
+
+setTimeout(function(){ //debouce and fire all letters.
+  for (var i = 0; i < c.length; i++){
+    c[i].style.color = rgbR();
+    c[i].style.fontSize = random(minChar,maxChar)+'vw';
+  }
+}, 100);
+
+function random(max, min){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+function rgbR(){
+  return 'rgb('+random(0,255)+', '+random(0,255)+', '+random(0,255)+')';
+}
+</script>
