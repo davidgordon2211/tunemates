@@ -40,7 +40,7 @@
           <div>
               <% @users.each do |u| %>
                 <input class="hide" id=<%= u.nickname %> type="checkbox" name= "name" value=<%= u.nickname %>>
-                <label class=<%= @playercolours.sample %> for=<%= u.nickname %>>
+                <label class="in-game-player-button-<%= u.user.color %>" for=<%= u.nickname %>>
                   <%= u.nickname %>
                 </label>
               <% end %>
