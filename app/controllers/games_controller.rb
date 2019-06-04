@@ -61,7 +61,16 @@ class GamesController < ApplicationController
   def update
   end
 
+  # def load_songs
+  #   @results = RSpotify::Track.search(params[:search])
+  #   #  render js
+  #   respond_to do |format|
+  #     format.js # <-- will render `app/views/reviews/create.js.erb`
+  #   end
+  # end
+
   def song_selection1
+    # raise
     if params[:search].present?
       @results = RSpotify::Track.search(params[:search])
     else
@@ -71,6 +80,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category1_id).first
+
+    respond_to do |format|
+      format.html { render "games/song_selection1" }
+      format.js
+    end
   end
 
   def song_selection2

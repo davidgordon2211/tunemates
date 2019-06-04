@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Song search</h3>
 
-  <%= form_tag song_selection_game_path(@game), :method => 'get' do %>
+  <%= form_tag song_selection_game_path(@game), remote: true, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search], category_1: params[:category_1] %>
       <%= submit_tag "Search", :name => nil %>
