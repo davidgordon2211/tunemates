@@ -39,6 +39,7 @@ class GamesController < ApplicationController
     @users = User.all
     @user = current_user
     @game = Game.find(params[:id])
+    @rounds = Round.where(game_id: @game.id)
     authorize @game
   end
 

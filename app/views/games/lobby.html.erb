@@ -22,7 +22,7 @@
      <div class="text-center">
       <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
+        <p class="player-button-<%= user.user.color %>"><%= user.nickname %></p>
       <% end %>
       <!-- </ul> -->
     </div>
@@ -50,3 +50,9 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function () {
+$('.exampleModal').modal('show');
+});
+</script>
