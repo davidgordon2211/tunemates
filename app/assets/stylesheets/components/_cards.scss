@@ -1,5 +1,81 @@
 // category cards
 
+#card-category-red {
+  background: linear-gradient(180deg, #fa2b57, #f7ca2f);
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  padding: 15px;
+}
+
+#card-category-blue {
+  background: linear-gradient(180deg, #00BCD3, #5EAB7F);
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  padding: 15px;
+}
+
+#card-category-purple {
+  background: linear-gradient(180deg, #00BCD3, #5EAB7F);
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  padding: 15px;
+}
+#card-category-yellow {
+  background: linear-gradient(180deg, #F7CA2F, #5EAB7F);
+  background-size: cover;
+  background-position: center;
+  height: 80px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px;
+  padding: 15px;
+}
+
+
 .card-category-red {
   background: linear-gradient(180deg, #fa2b57, #f7ca2f);
   background-size: cover;
