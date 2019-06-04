@@ -9,3 +9,14 @@ initSelect2();
 placeholderSelect2();
 
 import '../components/confettis';
+
+import { vh } from '../components/vhHeight';
+
+vh();
+
+import { turnActive } from '../components/guess-choice';
+import { categories } from '../components/guess-choice';
+
+turnActive(categories);
+
+
