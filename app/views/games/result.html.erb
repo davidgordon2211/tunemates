@@ -1,9 +1,8 @@
-<%#= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
 <div id="confettis">
   <div class="top-cont">
     <div class="container mt-3">
       <div class="text-center">
-      <h1>Results</h1>
         <strong><h2><%= @invited_users.order(score: :desc).first.nickname.upcase %> wins! 🎉🎉</h2></strong>
         </div>
       <div class="results-container">

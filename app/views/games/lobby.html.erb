@@ -30,7 +30,7 @@
      <div class="text-center">
       <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <p class="player-button-<%= user.user.color %>"><%= user.nickname %></p>
+        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
       <% end %>
       <!-- </ul> -->
     </div>
@@ -57,7 +57,7 @@
           </div>
         <% else %>
             <br>
-            <h3>Waiting on players to choose their songs...</h3>
+            <h3 class="text-center">Waiting on players to choose their songs...</h3>
         <% end %>
       </div>
     </div>
