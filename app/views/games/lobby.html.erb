@@ -35,7 +35,7 @@
           <% end %>
         <% end %>
 
-        <% if !@game.category1_id.nil? && @game.rounds.count < 6 %>
+        <% if !@game.category1_id.nil? && @game.rounds.count < @game.invited_users.count * 2 %>
           <div>
             <h2 class="text-center mt-5"><%= link_to "Select Songs", song_selection1_game_path(@game), class: 'button-blue' %></h2>
           </div>
