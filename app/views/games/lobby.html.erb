@@ -14,7 +14,7 @@
 
         <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2 placeholder", style: "width: 278px;", multiple: true %>
 
-            <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px; width: 278px", value: "Invite your tunemates!" %></h2>
+            <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px; width: 278px;", value: "Invite your tunemates!" %></h2>
          <% end %>
         <% end %>
       </div>
@@ -30,7 +30,7 @@
      <div class="text-center">
       <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
+        <p class="player-button-<%= user.user.color %>"><%= user.nickname %></p>
       <% end %>
       <!-- </ul> -->
     </div>
@@ -65,6 +65,7 @@
 </div>
 
 <script>
+
 function pageloadEvery(t) {
 setTimeout('location.reload(true)', t);
 }

@@ -42,6 +42,7 @@ class GamesController < ApplicationController
     @category1 = Category.where(id: @game.category1_id).first
     @category2 = Category.where(id: @game.category2_id).first
     @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
+    @rounds = Round.where(game_id: @game.id)
     authorize @game
   end
 

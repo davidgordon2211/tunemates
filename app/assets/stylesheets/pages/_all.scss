@@ -3,6 +3,16 @@ a {
   color: black;
 }
 
+table, tr, td, th {
+    border: none !important;
+    vertical-align: middle !important;
+    padding: 6px !important;
+}
+
+// th {
+//   padding: 6px !important;
+// }
+
 .top-cont {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -28,5 +38,6 @@ a:visited {
 }
 
 .top-header h2 {
-  padding-top: 5px;
+  padding-top: 15px;
 }
+

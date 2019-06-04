@@ -1,39 +1,58 @@
-<%= render 'shared/navbar' %>
-  <div id="confettis">
-    <div class="container">
+<%#= render 'shared/navbar' %>
+<div id="confettis">
+  <div class="top-cont">
+    <div class="container mt-3">
+      <div class="text-center">
       <h1>Results</h1>
-      <hr>
-      <br>
+        <strong><h2><%= @invited_users.order(score: :desc).first.nickname.upcase %> wins! 🎉🎉</h2></strong>
+        </div>
+      <div class="results-container">
+        <table class="table" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th scope="col"><!-- Pos --></th>
+              <th scope="col"><%= image_tag "crown-solid.svg" %></th>
+              <th scope="col"><!-- Name --></th>
+              <th scope="col"><!-- Points --></th>
+            </tr>
+          </thead>
 
-      <strong><h2><%= @invited_users.order(score: :desc).first.nickname.upcase %> WINS!</h2><h2>🍾🎵🥳🎉🏆</h2></strong>
+          <% @invited_users.order(score: :desc).each_with_index do |user, index| %>
+          <tr>
+            <td vertical-align= "middle"><b><%= index +1 %></b></td>
+            <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
+            <td vertical-align= "middle"><p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
+            <td vertical-align= "middle"><b><%= user.score %></b></td>
+          </tr>
+          <% end %>
+        </table>
 
-      <br>
-      <h2> <%= @invited_users.order(score: :desc).first.nickname.capitalize %> got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because they know their friends so well! 😉 </h2>
-      <br>
-      <hr>
-      <h2>Runners Up Table</h2>
-      <br>
-      <% @invited_users.order(score: :desc).drop(1).each_with_index do |user, index| %>
-        <h3><%= index +2 %>. <%= user.nickname.capitalize %> - <%= user.score %></h3>
-      <br>
-      <% end %>
-        <%= link_to "Go back to dashboard", dashboard_path, class: 'btn btn-primary' %>
-        <%= link_to "Play a new game?", dashboard_path, class: 'btn btn-primary'%>
+
+
+        <br>
+        <h3> <%= @invited_users.order(score: :desc).first.nickname.capitalize %> got an incredible <strong><%= @invited_users.order(score: :desc).first.score %> points</strong> because they know their friends so well! 😉 </h3>
+      </div>
+      <div class="text-center">
+        <br>
+        <br>
+        <%= link_to "Back to Dashboard", dashboard_path, class: 'button-light-grey' %>
         <br>
         <br>
         <br>
+        <%= link_to "Play Again", dashboard_path, class: 'button-red'%>
+      </div>
 
 
 
 
   <!-- <iframe src="https://open.spotify.com/embed/track/1lCRw5FEZ1gPDNPzy1K4zW" width="300" height="100" frameborder="0" allowtransparency="true" allow="encrypted-media", autoplay="true"></iframe> -->
 
-      <div id="player" class="center-game" style= "margin-top: 5px; margin-bottom: 5px;">
-        <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: true) %>
+      <div>
+        <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: false) %>
       </div>
     </div>
   </div>
-
+</div>
 
 <script>
 function rand(min, max) {

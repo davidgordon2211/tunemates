@@ -16,7 +16,12 @@
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  &:hover {
+   color: white;
+  }
+
 }
+
 
 .button-blue {
   background: #00BCD3;
@@ -36,11 +41,36 @@
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  &:hover {
+   color: white;
+  }
+
 }
 
 .button-white {
   background: white;
   color: black;
+  font-weight: 900;
+  padding: 1.25rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 3.5rem / 100%;
+  // position: relative;
+  min-width: 15rem;
+  max-width: 90vw;
+  text-decoration: none;
+  // overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+   color: black;
+  }
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+}
+
+.button-light-grey {
+  background: #C4C4C4;
+  color: white;
   font-weight: 900;
   padding: 1.25rem 2rem;
   font-size: 1.25rem;
@@ -70,6 +100,9 @@
   // overflow: hidden;
   border: 0;
   cursor: pointer;
+  &:hover {
+    color: #fa2b57;
+  }
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
 }
@@ -88,6 +121,9 @@
   // overflow: hidden;
   border: 0;
   cursor: pointer;
+  &:hover {
+    color: #F7CA2F;
+  }
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
 }
@@ -106,6 +142,9 @@
   // overflow: hidden;
   border: 0;
   cursor: pointer;
+  &:hover {
+   color: #5EAB7F;
+  }
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
 }
@@ -124,6 +163,9 @@
   // overflow: hidden;
   border: 0;
   cursor: pointer;
+  &:hover {
+    color: #00BCD3;
+  }
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
 }
@@ -143,6 +185,9 @@
   text-decoration: none;
   // overflow: hidden;
   cursor: pointer;
+  &:hover {
+    color: black;
+  }
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
 }
@@ -165,4 +210,15 @@
   // text-transform: uppercase;
   // letter-spacing: 0.05em;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+   &:hover {
+    color: white;
+  }
 }
+
+.btn-danger {
+  &:hover{
+    color: white !important;
+    background: #FA2B57 !important;
+  }
+}
+

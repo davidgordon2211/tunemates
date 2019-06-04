@@ -215,6 +215,9 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  &:hover {
+    color: black;
+  }
 }
 
 .card-game-info .card-game-user {

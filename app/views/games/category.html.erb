@@ -1,11 +1,12 @@
 <div class="top-cont">
   <div class="container" style="display: flex; flex-direction: column; align-content: space-between;">
-    <div class="top-header" style="padding-top: 30px;">
+    <div class="top-header" style="padding-top: 25px;">
+
       <h2>Your categories are...</h2>
     </div>
     <hr>
-    <br>
-    <br>
+
+
     <div class="text-center" style="display: flex; flex-direction: column; justify-content: center; height: 100% - 90px; align-self: stretch; ">
       <% @categories.each do |category| %>
         <div>
@@ -16,8 +17,10 @@
       <% end %>
       <br>
       <div>
-      <%= link_to "Reshuffle", category_game_path(@game), class: 'btn btn-light', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2);" %>
-      <%= link_to "Accept 👉", save_categories_game_path(params[:id], category1: @categories.first.id, category2: @categories.second.id ),   method: :post, class: 'btn btn-danger', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2);" %>
+
+      <%= link_to "Reshuffle", category_game_path(@game), class: 'btn-lg btn-light', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2); margin: 5px;" %>
+
+      <%= link_to  "Accept 👉", save_categories_game_path(params[:id], category1: @categories.first.id, category2: @categories.second.id ),   method: :post, class: 'btn-lg btn-danger', style: "border-radius: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2); margin: 5px;" %>
       </div>
     </div>
 
