@@ -10,5 +10,7 @@ const turnActive = (categories) => {
     })
   })
 }
-
 turnActive(categories);
+
+export { categories };
+export { turnActive };

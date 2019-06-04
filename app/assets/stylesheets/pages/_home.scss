@@ -44,6 +44,7 @@
   background: linear-gradient(180deg, #F7CA2F, #5EAB7F);
   background-size: 400% 400%;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   text-align: center;
   display: flex;
   align-items: center;
@@ -57,6 +58,7 @@
   background: linear-gradient(180deg, #00BCD3, #5EAB7F);
   background-size: 400% 400%;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   text-align: center;
   display: flex;
   align-items: center;
@@ -71,6 +73,7 @@
   background: linear-gradient(180deg, #BE89E8, #00BCD3);
   background-size: 400% 400%;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   text-align: center;
   display: flex;
   align-items: center;
