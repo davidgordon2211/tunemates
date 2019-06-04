@@ -90,7 +90,7 @@ class GamesController < ApplicationController
     @game.category1_id = params[:category1]
     @game.category2_id = params[:category2]
     @game.save
-    redirect_to lobby_game_path(@game)
+    redirect_to song_selection1_game_path(@game)
   end
 
   def round_finished
