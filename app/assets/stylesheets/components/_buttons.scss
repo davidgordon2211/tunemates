@@ -56,6 +56,24 @@
   // letter-spacing: 0.05em;
 }
 
+.button-light-grey {
+  background: #C4C4C4;
+  color: white;
+  font-weight: 900;
+  padding: 1.25rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 3.5rem / 100%;
+  // position: relative;
+  min-width: 15rem;
+  max-width: 90vw;
+  text-decoration: none;
+  // overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  // text-transform: uppercase;
+  // letter-spacing: 0.05em;
+}
+
 .button-white-home-1 {
   background: white;
   color: #fa2b57;
