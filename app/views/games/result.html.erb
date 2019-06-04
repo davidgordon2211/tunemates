@@ -34,54 +34,8 @@
     </div>
   </div>
 
-<script>
-var minChar = 10;
-var maxChar = 18;
-
-var heading = document.getElementsByTagName('h2')[0];
-var arr = heading.innerHTML.split('');
-heading.innerHTML = null;
-
-var c = [];
-
-for (var i = 0; i < arr.length; i++){
-  var elm = document.createElement('span');
-  elm.classList.add("dancing-words");
-  elm.innerHTML = arr[i];
-  heading.appendChild(c[i] = elm);
-
-  c[i].addEventListener("transitionend", function(e) {
-    var el = e.srcElement;
-    if (e.propertyName === 'font-size'){
-      var oldsize = parseInt(el.style.fontSize);
-      el.style.fontSize = random(minChar,maxChar)+'vw';
-      if (oldsize === parseInt(el.style.fontSize)){
-        el.style.fontSize = oldsize+1+'vw';
-      }
-      el.style.color = rgbR();
-      var s = random(200,800)/1000;
-      el.style.transition = 'font-size '+s+'s, color 1s';
-    }
-  });
-}
-
-setTimeout(function(){ //debouce and fire all letters.
-  for (var i = 0; i < c.length; i++){
-    c[i].style.color = rgbR();
-    c[i].style.fontSize = random(minChar,maxChar)+'vw';
-  }
-}, 100);
-
-function random(max, min){
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-function rgbR(){
-  return 'rgb('+random(0,255)+', '+random(0,255)+', '+random(0,255)+')';
-}
-</script>
 
 <script>
-
 function rand(min, max) {
   return ((max-min) * Math.random()) + min;
 }

@@ -49,12 +49,24 @@
           </div>
         <% end %>
 
-        <% if @game.rounds.count >= 2 %>
+        <% if @game.rounds.count < 2 %>
+          <h2></h2>
+        <% elsif @game.rounds.count == @game.invited_users.count * 2 %>
           <div>
             <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red' %></h2>
           </div>
+        <% else %>
+            <br>
+            <h3>Waiting on players to choose their songs...</h3>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+function pageloadEvery(t) {
+setTimeout('location.reload(true)', t);
+}
+</script>
+<body onload="javascript:pageloadEvery(10000);">
