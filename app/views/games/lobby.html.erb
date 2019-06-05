@@ -19,18 +19,22 @@
         <% end %>
       </div>
 
-        <% if !@category1.nil? && !@category2.nil? %>
-            <div class="text-center" style="display: flex; flex-direction: row; justify-content: center; height: 100% - 90px; align-self: stretch; ">
-              <div id=<%= @colours.sample %> >
-                <%= @category1.name %> </div> <div id=<%= @colours.sample %> > <%= @category2.name %> </div>
-              </div>
-        <% end %>
-        <br>
+      <% if !@category1.nil? && !@category2.nil? %>
+      <p>Game Categories</p>
+        <div class="text-center" style="display: flex; flex-direction: row; justify-content: center; height: 100% - 90px; align-self: stretch; ">
+          <div class=<%= @category1.color %> >
+            <%= @category1.name %>
+          </div>
+          <div class=<%= @category2.color %> >
+            <%= @category2.name %>
+          </div>
+        </div>
+      <% end %>
 
      <div class="text-center">
       <!-- <ul style="list-style-type:none;"> -->
       <% @game.invited_users.each do |user| %>
-        <p class="player-button-<%= user.user.color %>"><%= user.nickname %></p>
+        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
       <% end %>
       <!-- </ul> -->
     </div>
