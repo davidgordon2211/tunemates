@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :find_game, only: [:show, :lobby, :destroy, :category, :song_selection, :save_categories, :round_finished, :result]
+  before_action :find_game, only: [:show, :lobby, :destroy, :category, :song_selection1, :song_selection2, :save_categories, :round_finished, :result]
 
   def show
     @rounds = Round.where(game_id: @game.id).where(finished: false)
@@ -49,18 +49,15 @@ class GamesController < ApplicationController
     @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
   end
 
-  def song_selection
+  def song_selection1
     if params[:search].present?
       @results = RSpotify::Track.search(params[:search])
     else
       @results = []
     end
     @song = Song.new
-  end
-
-  def song_selection1
-    song_selection
     @category = Category.where(id: @game.category1_id).first
+
     respond_to do |format|
       format.html { render "games/song_selection1" }
       format.js
@@ -68,7 +65,12 @@ class GamesController < ApplicationController
   end
 
   def song_selection2
-    song_selection
+    if params[:search].present?
+      @results = RSpotify::Track.search(params[:search])
+    else
+      @results = []
+    end
+    @song = Song.new
     @category = Category.where(id: @game.category2_id).first
     respond_to do |format|
       format.html { render "games/song_selection2" }
@@ -90,15 +92,6 @@ class GamesController < ApplicationController
     @round = Round.find(params[:round_id])
     @user_guess.round = @round
     @song = Song.find_by(id: @round.song_id)
-    user_guess
-    points_scoring
-    @round.finished = true
-    @round.save
-    @invited_user.save!
-    redirect_to game_path(@game)
-  end
-
-  def user_guess
     if current_user == @song.user
       @user_guess.submitter = current_user
     elsif !params[:name].nil?
@@ -112,9 +105,6 @@ class GamesController < ApplicationController
       @user_guess.category = @category
     else @user_guess.submitter = current_user
     end
-  end
-
-  def points_scoring
     if current_user == @song.user
       @invited_user.score += 0
     elsif @user_guess.submitter == nil
@@ -124,6 +114,10 @@ class GamesController < ApplicationController
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
       @invited_user.score += 5
     end
+    @round.finished = true
+    @round.save
+    @invited_user.save!
+    redirect_to game_path(@game)
   end
 
   def game_finished
@@ -138,7 +132,7 @@ class GamesController < ApplicationController
 
   private
 
-  def find_user
+  def find_game
     @game = Game.find(params[:id])
   end
 end
