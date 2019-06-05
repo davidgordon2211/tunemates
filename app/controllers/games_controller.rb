@@ -1,25 +1,16 @@
 class GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :find_game, only: [:show, :lobby, :destroy, :category, :song_selection1, :song_selection2, :save_categories, :round_finished, :result]
 
   def show
-    @game = Game.find(params[:id])
     @rounds = Round.where(game_id: @game.id).where(finished: false)
-    # @rounds.shuffle
     @catcolours = ["category-guess-red", "category-guess-purple", "category-guess-blue", "category-guess-yellow"]
     @playercolours = ["in-game-player-button-red", "in-game-player-button-blue", "in-game-player-button-yellow", "in-game-player-button-purple", "in-game-player-button-green"]
     if @rounds.empty?
       redirect_to result_game_path(@game)
       game_finished
     else
-      # order by position
       @round = @rounds.order(:position).first
-
-      # previous attempts to show rounds in a random order:
-      # @round = @rounds.order(:created_at).first
-      # @round = @rounds.order(song_id: :desc).first
-      # @round = @rounds.order(:songs_spotify_link_DESC).first
-      # @round = @rounds.order('songs.spotify_link DESC').first
-
       @users = @game.invited_users
       @song = Song.where(id: @round.song_id).first
       @category1 = Category.where(id: @game.category1_id).first
@@ -28,7 +19,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    # generate a link
     @game = Game.new
     authorize @game
     @game.user = current_user
@@ -40,16 +30,13 @@ class GamesController < ApplicationController
     @colours = ["player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
     @users = User.all
     @user = current_user
-    @game = Game.find(params[:id])
     @category1 = Category.where(id: @game.category1_id).first
     @category2 = Category.where(id: @game.category2_id).first
     @colours = ["card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
     @rounds = Round.where(game_id: @game.id)
-    authorize @game
   end
 
   def destroy
-    @game = Game.find(params[:id])
     authorize @game
     @game.destroy
     redirect_to dashboard_path
@@ -60,30 +47,14 @@ class GamesController < ApplicationController
     authorize @game
     @categories = Category.all.sample(2)
     @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
-
-    # @category.sample(2)
   end
-
-  def update
-  end
-
-  # def load_songs
-  #   @results = RSpotify::Track.search(params[:search])
-  #   #  render js
-  #   respond_to do |format|
-  #     format.js # <-- will render `app/views/reviews/create.js.erb`
-  #   end
-  # end
 
   def song_selection1
-    # raise
     if params[:search].present?
       @results = RSpotify::Track.search(params[:search])
     else
       @results = []
     end
-
-    @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category1_id).first
 
@@ -99,11 +70,8 @@ class GamesController < ApplicationController
     else
       @results = []
     end
-
-    @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category2_id).first
-
     respond_to do |format|
       format.html { render "games/song_selection2" }
       format.js
@@ -111,7 +79,6 @@ class GamesController < ApplicationController
   end
 
   def save_categories
-    @game = Game.find(params[:id])
     @game.category1_id = params[:category1]
     @game.category2_id = params[:category2]
     @game.save
@@ -119,10 +86,8 @@ class GamesController < ApplicationController
   end
 
   def round_finished
-    @game = Game.find(params[:id])
     @user_guess = UserGuess.new
     @user_guess.guesser = current_user
-    # @invited_user = current_user
     @invited_user = InvitedUser.find_by(user_id: current_user, game: @game)
     @round = Round.find(params[:round_id])
     @user_guess.round = @round
@@ -140,22 +105,15 @@ class GamesController < ApplicationController
       @user_guess.category = @category
     else @user_guess.submitter = current_user
     end
-    # @song = Song.find(params[:song_id])
-    # @round.song = @song_id
-    # @user_guess.submitter = @song.user
     if current_user == @song.user
       @invited_user.score += 0
-      # @user_guess.save!
     elsif @user_guess.submitter == nil
       @invited_user.score += 0
     elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
-      # @user_guess.save!
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
       @invited_user.score += 5
-      # @user_guess.save!
     end
-    # return @invited_user.score
     @round.finished = true
     @round.save
     @invited_user.save!
@@ -169,12 +127,12 @@ class GamesController < ApplicationController
   end
 
   def result
-    @game = Game.find(params[:id])
     @invited_users = InvitedUser.where(game: @game)
-    # @winner = InvitedUser.nickname.where(maximum: "score")
   end
 
-  # In case methos for winner doesn't work, try this method =>
-  # variable = maximum(:value)
-  # where(:value => variable)
+  private
+
+  def find_game
+    @game = Game.find(params[:id])
+  end
 end
