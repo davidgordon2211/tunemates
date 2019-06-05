@@ -20,7 +20,7 @@
           <tr>
             <td vertical-align= "middle"><b><%= index +1 %></b></td>
             <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
-            <td vertical-align= "middle"><p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
+            <td vertical-align= "middle"><p style= "margin:0;"><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
             <td vertical-align= "middle"><b><%= user.score %></b></td>
           </tr>
           <% end %>
