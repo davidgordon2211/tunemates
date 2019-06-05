@@ -144,6 +144,8 @@ class GamesController < ApplicationController
     if current_user == @song.user
       @invited_user.score += 0
       # @user_guess.save!
+    elsif @user_guess.submitter == nil
+      @invited_user.score += 0
     elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
       # @user_guess.save!
