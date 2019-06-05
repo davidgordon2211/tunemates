@@ -127,7 +127,7 @@ class GamesController < ApplicationController
     @song = Song.find_by(id: @round.song_id)
     if current_user == @song.user
       @user_guess.submitter = current_user
-    elsif InvitedUser.where(nickname: params[:name]).first != nil
+    elsif !params[:name].nil?
       @user_guess.submitter = InvitedUser.where(nickname: params[:name]).first.user
     end
     if params[:category1] == "on"
