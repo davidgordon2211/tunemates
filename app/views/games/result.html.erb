@@ -50,12 +50,36 @@
         <br>
         <br>
         <br>
-        <%= link_to "Play Again", dashboard_path, class: 'button-red'%>
+        <%= link_to "Play Again", dashboard_path, class: 'button-red mb-5'%>
       </div>
       <div>
         <%=  audio_tag("https://p.scdn.co/mp3-preview/c6b4289f242f7297752d77f4113455ff95ae2e50?cid=77b820f032ae413a8ac5dad827aa72d1", autoplay: true, controls: false) %>
       </div>
+      <div class="text-center mt-5 mb-4" id="who-chose">
+          <a class="button-blue" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Who chose what?</a>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse mt-5" id="multiCollapseExample1">
+              <div class="results">
+                <% @songs.each do |song| %>
+                  <div class="card-song text-left">
+                      <%= image_tag song.photo, size: "30" %>
+                      <div class="card-song-infos">
+                        <h2><%= song.title %> - <%= song.artist %> </h2>
+                        <p><strong><%= song.user.first_name %></strong> chose this for <strong><%= song.category.name %></strong></p>
+                      </div>
+                  </div>
+                <% end %>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+
+
     <div class="confetti-500"></div>
     <div class="confetti-499"></div>
     <div class="confetti-498"></div>

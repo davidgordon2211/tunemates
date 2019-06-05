@@ -171,7 +171,7 @@ class GamesController < ApplicationController
   def result
     @game = Game.find(params[:id])
     @invited_users = InvitedUser.where(game: @game)
-    # @winner = InvitedUser.nickname.where(maximum: "score")
+    @songs = @game.rounds.map { |e| Song.find(e.song_id) }
   end
 
   # In case methos for winner doesn't work, try this method =>
