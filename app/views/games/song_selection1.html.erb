@@ -4,27 +4,45 @@
     <br>
     <h3><%= @category.name %></h3>
     <br>
-    <%= form_tag song_selection1_game_path(@game), :method => 'get' do %>
+
+     <%= form_tag song_selection1_game_path(@game), id: "song-search", remote: true, :method => 'get' do %>
       <p>
-        <%= text_field_tag :search, params[:search], style: "border: 2px solid #C4C4C4;"  %>
-        <%= submit_tag "Search", :name => nil, class: 'btn btn-danger', style: "border-radius: 20px;" %>
+        <%= text_field_tag :search, params[:search], name: 'search', style: "border: 2px solid #C4C4C4;" %>
+        <!-- <input type="text" name="search" id="search" value="" style="border: 2px solid #C4C4C4;"> -->
+        <%= submit_tag "Search", id: "search-btn", :name => nil, class: 'btn btn-danger', style: "border-radius: 20px;" %>
       </p>
       <br>
     <% end %>
 
+  <div id="results">
     <% @results.each do |song| %>
       <% if song.preview_url != nil %>
         <div class="card-song text-left">
           <%= link_to game_songs_path(game_id: params[:id], title: song.name, spotify_link: song.preview_url, artist: song.artists.first.name, photo: song.album.images.second["url"], category_id: @game.category1_id),  method: :post do  %>
-          <%= image_tag song.album.images.second["url"], size: "80x80" %>
-          <div class="card-song-infos">
-            <h2><%= song.name %></h2>
-            <p><%= song.artists.first.name %></p>
-          <%= link_to "Add +", game_songs_path(game_id: params[:id], title: song.name, spotify_link: song.preview_url, artist: song.artists.first.name, photo: song.album.images.second["url"], category_id: @game.category1_id),  method: :post, class: 'btn btn-danger card-song-add', style: "border-radius: 20px;" %>
-          </div>
-          <% end %>
-      </div>
-        <% end %>
+            <%= image_tag song.album.images.second["url"], size: "80x80" %>
+            <div class="card-song-infos">
+              <h2><%= song.name %></h2>
+              <p><%= song.artists.first.name %></p>
+            <%= link_to "Add +", game_songs_path(game_id: params[:id], title: song.name, spotify_link: song.preview_url, artist: song.artists.first.name, photo: song.album.images.second["url"], category_id: @game.category1_id),  method: :post, class: 'btn btn-danger card-song-add', style: "border-radius: 20px;" %>
+            </div>
+            <% end %>
+        </div>
       <% end %>
+    <% end %>
+  </div>
   </div>
 </div>
+
+
+<script>
+  const submitBtn = document.getElementById('search-btn');
+  // const form = document.getElementById('song-search');
+  const input = document.getElementById('search');
+  input.addEventListener("keyup", (event) => {
+    // form.submit();
+    submitBtn.click();
+  });
+</script>
+
+
+

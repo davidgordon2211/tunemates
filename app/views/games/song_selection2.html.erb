@@ -4,14 +4,14 @@
     <br>
     <h3><%= @category.name %></h3>
     <br>
-    <%= form_tag song_selection2_game_path(@game), :method => 'get' do %>
+    <%= form_tag song_selection2_game_path(@game), id: "song-search", remote: true, :method => 'get' do %>
       <p>
         <%= text_field_tag :search, params[:search], style: "border: 2px solid #C4C4C4;"  %>
-        <%= submit_tag "Search", :name => nil, class: 'btn btn-danger', style: "border-radius: 20px;" %>
+        <%= submit_tag "Search", id: "search-btn", :name => nil, class: 'btn btn-danger', style: "border-radius: 20px;" %>
       </p>
       <br>
     <% end %>
-
+  <div id="results">
      <% @results.each do |song| %>
       <% if song.preview_url != nil %>
         <div class="card-song text-left">
@@ -27,4 +27,15 @@
       <% end %>
     <% end %>
   </div>
+  </div>
 </div>
+
+<script>
+  const submitBtn = document.getElementById('search-btn');
+  // const form = document.getElementById('song-search');
+  const input = document.getElementById('search');
+  input.addEventListener("keyup", (event) => {
+    // form.submit();
+    submitBtn.click();
+  });
+</script>
