@@ -10,7 +10,7 @@
     <div class="text-center" style="display: flex; flex-direction: column; justify-content: center; height: 100% - 90px; align-self: stretch; ">
       <% @categories.each do |category| %>
         <div>
-          <div class=<%= @colours.sample %> >
+          <div class=<%= @category.color %> >
             <p><%= category.name %></p>
           </div>
         </div>
