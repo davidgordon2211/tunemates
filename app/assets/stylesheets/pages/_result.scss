@@ -1,19 +1,49 @@
-#confettis {
-  height: 50%;
-  // position: absolute;
+// #confettis {
+//   height: 50%;
+//   // position: absolute;
+// }
+
+// .confetti {
+//   height: 10px;
+//   width: 10px;
+//   background: lightgray;
+//   position: absolute;
+//   transition: transform 0.9s linear;
+//   z-index: -1;
+//   // opacity: 0.3 !important;
+// }
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
 }
 
-.confetti {
-  height: 10px;
-  width: 10px;
-  background: lightgray;
+[class|="confetti"] {
   position: absolute;
-  transition: transform .5s linear;
+  z-index: -1;
 }
 
-.dancing-words {
-  text-shadow: 3px 3px 3px #555;
-  font-size:75px;
-  color: rgba(5,5,5,0);
-  transition: font-size 1s, color 1s;
+$colors: (#FA2B57, #F7CA2F, #BE89E8, #00BCD3);
+
+@for $i from 0 through 200 {
+  $w: random(26);
+  $l: random(100);
+  .confetti-#{$i} {
+    width: #{$w}px;
+    height: #{$w*1.2}px;
+    background-color: nth($colors, random(4));
+    top: -10%;
+    left: unquote($l+"%");
+    opacity: random() + 0.5;
+    transform: rotate3d(random(1),random(1),random(1),#{random()*360}deg);
+    animation: drop-#{$i} unquote(4+random()+"s") unquote(random()+"s") infinite;
+  }
+
+  @keyframes drop-#{$i} {
+    100% {
+      top:180%;
+      left: unquote($l+random(66)-33+"%");
+  transform:rotate3d(random(1),random(1),random(1),#{(random(200)-100)*20}deg);
+    }
+  }
 }

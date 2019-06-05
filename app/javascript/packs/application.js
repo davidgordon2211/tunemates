@@ -8,8 +8,6 @@ import { placeholderSelect2 } from '../components/init_select2';
 initSelect2();
 placeholderSelect2();
 
-import '../components/confettis';
-
 import { vh } from '../components/vhHeight';
 
 vh();
