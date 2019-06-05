@@ -19,7 +19,7 @@ categories = [
    {name: "Which Kanye song best represents you? 👍", color: "card-category-yellow"},
    {name: "Which song reminds you of summer? 🌞", color: "card-category-red"},
    {name: "What song reminds you of your job? 👨", color: "card-category-blue"},
-   {name: "What song reminds you of school? 🎓", color: "card-category-purpe"},
+   {name: "What song reminds you of school? 🎓", color: "card-category-purple"},
    {name: "What song would be the soundtrack of your life? 🎵", color: "card-category-yellow"},
    {name: "What's your go-to karaoke song? 🎵", color: "card-category-red"}
 
