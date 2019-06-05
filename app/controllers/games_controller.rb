@@ -20,7 +20,7 @@ class GamesController < ApplicationController
       # @round = @rounds.order(:songs_spotify_link_DESC).first
       # @round = @rounds.order('songs.spotify_link DESC').first
 
-      @users = @game.invited_users
+      @users = @game.invited_users.where.not(user_id: current_user)
       @song = Song.where(id: @round.song_id).first
       @category1 = Category.where(id: @game.category1_id).first
       @category2 = Category.where(id: @game.category2_id).first
