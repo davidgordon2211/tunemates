@@ -13,6 +13,8 @@ class GamesController < ApplicationController
     else
       # order by position
       @round = @rounds.order(:position).first
+
+      # previous attempts to show rounds in a random order:
       # @round = @rounds.order(:created_at).first
       # @round = @rounds.order(song_id: :desc).first
       # @round = @rounds.order(:songs_spotify_link_DESC).first
