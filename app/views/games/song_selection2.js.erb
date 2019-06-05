@@ -1,0 +1,11 @@
+function insertCard(html) {
+  cardResults.insertAdjacentHTML('beforeend', html);
+}
+
+var cardResults = document.getElementById('results');
+cardResults.innerHTML = '';
+<% @results.each do |song| %>
+  <% if song.preview_url != nil %>
+    insertCard('<%= j render "games/card_song_selection2", song: song, game: @game %>');
+  <% end %>
+<% end %>

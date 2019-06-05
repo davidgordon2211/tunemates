@@ -5,9 +5,7 @@
     <h3><%= @category.name %></h3>
     <br>
 
-<!-- load_songs_game_path(@game) -->
-    <!-- before it was sending information to song_selection1_game_path(@game) -->
-    <%= form_tag song_selection1_game_path(@game), id: "song-search", remote: true, :method => 'get' do %>
+     <%= form_tag song_selection1_game_path(@game), id: "song-search", remote: true, :method => 'get' do %>
       <p>
         <%= text_field_tag :search, params[:search], name: 'search', style: "border: 2px solid #C4C4C4;" %>
         <!-- <input type="text" name="search" id="search" value="" style="border: 2px solid #C4C4C4;"> -->

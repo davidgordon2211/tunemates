@@ -97,6 +97,11 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @song = Song.new
     @category = Category.where(id: @game.category2_id).first
+
+    respond_to do |format|
+      format.html { render "games/song_selection2" }
+      format.js
+    end
   end
 
   def save_categories
