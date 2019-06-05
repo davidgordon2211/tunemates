@@ -20,7 +20,6 @@
           <div class="card-song-infos">
             <h2><%= song.name %></h2>
             <p><%= song.artists.first.name %></p>
-            <% binding.pry %>
             <%= link_to "Add +", game_songs_path(game_id: params[:id], title: song.name, spotify_link: song.preview_url, artist: song.artists.first.name, photo: song.album.images.second["url"], category_id: @game.category2_id),  method: :post, class: 'btn btn-danger card-song-add', style: "border-radius: 20px;" %>
           </div>
           <% end %>
