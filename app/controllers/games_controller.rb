@@ -122,12 +122,14 @@ class GamesController < ApplicationController
     # @user_guess.submitter = @song.user
     if current_user == @song.user
       @invited_user.score += 0
+      @user_guess.save!
     elsif @user_guess.category == @song.category && @user_guess.submitter.id == @song.user.id
       @invited_user.score += 10
+      @user_guess.save!
     elsif @user_guess.category == @song.category || @user_guess.submitter.id == @song.user.id
       @invited_user.score += 5
+      @user_guess.save!
     end
-    @user_guess.save!
     # return @invited_user.score
     @round.finished = true
     @round.save
