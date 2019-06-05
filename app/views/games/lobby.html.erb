@@ -2,41 +2,39 @@
   <%= render 'shared/navbar' %>
   <div class="container">
     <div class="top-header">
-      <%#= link_to "tunemates.", dashboard_path, class: 'h3' %>
       <h2><%= @game.user.first_name %>'s Game</h2>
     </div>
-    <hr>
     <!-- <br> -->
     <div class="lobby-box">
       <div>
         <% if @game.category1_id.nil? || @game.category2_id.nil?  %>
           <h2 class="text-center nicknames"><%= simple_form_for @game, :url => game_invited_users_path(@game), remote: true, :method => :post do |f| %>
-
-        <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2 placeholder", style: "width: 278px;", multiple: true %>
-
+          <%= select_tag :user, options_for_select(@users.collect{ |u| [u.first_name, u.id] }), class: "select2 placeholder", style: "width: 278px;", multiple: true %>
             <%= f.button :submit, id: 'simple-form-submit', class: "button-yellow", style: "margin-top: 10px; margin-bottom: 10px; width: 278px;", value: "Invite your tunemates!" %></h2>
          <% end %>
         <% end %>
       </div>
 
       <% if !@category1.nil? && !@category2.nil? %>
-      <p>Game Categories</p>
+      <h5 class="text-center">Categories</h5>
         <div class="text-center" style="display: flex; flex-direction: row; justify-content: center; height: 100% - 90px; align-self: stretch; ">
-          <div class=<%= @category1.color %> >
+          <div class=<%= @category1.color %> style= "width: 50%; font-size: 1rem" >
             <%= @category1.name %>
           </div>
-          <div class=<%= @category2.color %> >
+          <div class=<%= @category2.color %> style= "width: 50%; font-size: 1rem" >
             <%= @category2.name %>
           </div>
         </div>
       <% end %>
 
-     <div class="text-center">
-      <!-- <ul style="list-style-type:none;"> -->
-      <% @game.invited_users.each do |user| %>
+     <div class="text-center mt-2">
+      <% if @game.invited_users.count > 0 %>
+        <h5 class="text-center">Players</h5>
+        <br>
+        <% @game.invited_users.each do |user| %>
         <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
+        <% end %>
       <% end %>
-      <!-- </ul> -->
     </div>
       <div class="ctas">
         <% if current_user == @game.user %>
@@ -47,21 +45,22 @@
           <% end %>
         <% end %>
 
-        <% if !@game.category1_id.nil? && @game.rounds.count < @game.invited_users.count * 2 %>
-          <div>
-            <h2 class="text-center mt-5"><%= link_to "Select Songs", song_selection1_game_path(@game), class: 'button-blue' %></h2>
-          </div>
-        <% end %>
 
         <% if @game.rounds.count < 2 %>
           <h2></h2>
-        <% elsif @game.rounds.count == @game.invited_users.count * 2 %>
+        <% elsif @game.rounds.count == @game.invited_users.count * 2 && @game.rounds.count > 0 %>
           <div>
             <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red' %></h2>
           </div>
         <% else %>
             <br>
-            <h3>Waiting on players to choose their songs...</h3>
+            <h4 class = "text-center blink_me">Waiting on players to choose their songs...</h4>
+        <% end %>
+
+        <% if !@game.category1_id.nil? && @game.rounds.count < @game.invited_users.count * 2 %>
+          <div>
+            <h2 class="text-center mt-5"><%= link_to "Select Songs", song_selection1_game_path(@game), class: 'button-blue' %></h2>
+          </div>
         <% end %>
       </div>
     </div>
