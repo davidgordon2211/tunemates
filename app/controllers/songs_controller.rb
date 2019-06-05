@@ -9,7 +9,8 @@ class SongsController < ApplicationController
       @round.save!
       @round.song_id = @song.id
       if @round.save
-        set_round_order
+        @round.position = (1..1000).to_a.sample
+        @round.save
         if @song.category_id == @game.category2_id
           redirect_to lobby_game_path(@game)
         else
@@ -31,14 +32,18 @@ class SongsController < ApplicationController
   end
 
   def set_round_order
-    round_count = @game.rounds.count
-    # making an array from 0 to @game.rounds.count
-    position_array = array_up_to(round_count)
-    position_array.shuffle!
-    # iterating over shuffled array and assign the num to a round
-    position_array.each do |position|
-      @round[:position] = position
-    end
+
+    @round.position = (1..1000).to_a.sample
+    # round_count = @game.rounds.count
+    # # making an array from 0 to @game.rounds.count
+    # position_array = array_up_to(round_count)
+    # shuffled_position_array = position_array.shuffle
+    # # iterating over shuffled array and assign the num to a round
+    # shuffled_position_array.each do |num|
+    #   # each round gets random number
+    #   @round.position = num
+    #   # return @round
+    # end
   end
 
   def song_params

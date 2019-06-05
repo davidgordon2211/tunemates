@@ -13,6 +13,8 @@ class GamesController < ApplicationController
     else
       # order by position
       @round = @rounds.order(:position).first
+
+      # previous attempts to show rounds in a random order:
       # @round = @rounds.order(:created_at).first
       # @round = @rounds.order(song_id: :desc).first
       # @round = @rounds.order(:songs_spotify_link_DESC).first
@@ -41,7 +43,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @category1 = Category.where(id: @game.category1_id).first
     @category2 = Category.where(id: @game.category2_id).first
-    @colours = [ "card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
+    @colours = ["card-category-red", "card-category-blue", "card-category-purple", "card-category-yellow" ]
     @rounds = Round.where(game_id: @game.id)
     authorize @game
   end
