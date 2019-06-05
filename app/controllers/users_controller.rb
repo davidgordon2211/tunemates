@@ -6,12 +6,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-
-  # def home
-  #   @user = current_user
-  #   authorize @user
-  # end
-
   def update
     @user = current_user
     @user.update(user_params)
@@ -24,7 +18,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    # redirect to homepage
   end
 
   private

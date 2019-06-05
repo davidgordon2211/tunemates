@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :photo, :color])
   end
 
-  # after_action :verify_authorized, except: [ :index, :home ], unless: :skip_pundit?
-  # after_action :verify_policy_scoped, only: [ :index, :home ] ,  unless: :skip_pundit?
-
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || dashboard_path
   end
@@ -26,5 +23,4 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
-
 end
