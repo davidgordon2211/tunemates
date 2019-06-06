@@ -56,11 +56,12 @@
           <h6> <%= @invited_users.order(score: :desc).first.nickname.capitalize %>'s winning total was <strong><%= @invited_users.order(score: :desc).first.score %> points</strong>.</h6>
           <h6>They scored <%= loserDiff %> more points than you.</h6>
           <h6>You didn't win this time.. why don't you challenge <%= @invited_users.order(score: :desc).first.nickname%> to another game? 😉</h6>
+          <h6>Tap each player's name to see what they chose.</h6>
           <% else %>
           <% diff = @invited_users.order(score: :desc).first.score - @invited_users.order(score: :desc).second.score %>
           <h6>Congratulations! You won by <b><%= diff %> points 🙌🏻 </b></h6>
+          <h6>Tap a player's name to see what they chose.</h6>
           <h6>Want to give <%= @invited_users.order(score: :desc).second.nickname%> another chance to beat you? 😉</h6>
-          <h6></h6>
           <% end %>
         </div>
         <div class="player-results">
