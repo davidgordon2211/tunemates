@@ -36,7 +36,7 @@ $colors: (#FA2B57, #F7CA2F, #BE89E8, #00BCD3);
     left: unquote($l+"%");
     opacity: random() + 0.5;
     transform: rotate3d(random(1),random(1),random(1),#{random()*360}deg);
-    animation: drop-#{$i} unquote(4+random()+"s") unquote(random()+"s") infinite;
+    animation: drop-#{$i} unquote(4+random()+"s") unquote(random()+"s");
   }
 
   @keyframes drop-#{$i} {
