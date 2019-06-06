@@ -8,7 +8,7 @@ categories = [
    {name: "What's your favourite track to workout to? 🏋", color: "card-category-red" },
    # {name: "What's the most recent song you listened to? 🆒", color: "card-category-blue"},
    # {name: "Your favourite road trip tune 🚘", color: "card-category-purple"},
-   {name: "What song describes your last relationship 💔", color: "card-category-yellow"},
+   {name: "What song describes your last relationship? 💔", color: "card-category-yellow"},
    {name: "What song do you sing in the shower? 💦", color: "card-category-blue"},
    {name: "What's the most embarrassing song you know by heart? ❤️", color: "card-category-blue"},
    {name: "What song makes you cry? 😭", color: "card-category-purple"},
