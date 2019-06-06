@@ -28,21 +28,25 @@
       <% end %>
 
      <div class="text-center mt-2">
+      <table align="center">
       <% if @game.invited_users.count > 0 %>
-        <h5 class="text-center">Players</h5>
+        <h5 class="table" cellspacing="0" cellpadding="0">Players</h5>
         <br>
         <% @game.invited_users.each do |user| %>
-        <table align="center">
+         <tr>
+          <td vertical-align= "middle"><b></td>
           <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
-          <td vertical-align= "middle"><p style= "margin:0;"><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
+          <td align= "left"><a><span style= "margin:0" class="player-button-<%= user.user.color %>"><%= user.nickname %></span></a></td>
+           </tr>
         <% end %>
-        </table>
       <% end %>
+       </table>
     </div>
       <div class="ctas">
         <% if current_user == @game.user %>
           <% if @game.category1_id.nil? || @game.category2_id.nil? %>
             <div class="text-center m-4">
+              <br>
               <%= link_to "View categories", category_game_path(@game), class: 'button-red' %>
             </div>
           <% end %>
