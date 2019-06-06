@@ -21,7 +21,7 @@
             <td vertical-align= "middle"><b><%= index +1 %></b></td>
             <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
               <td vertical-align= "middle">
-                <a class="player-button-<%= user.user.color %>" data-toggle="collapse" href="#multiCollapse<%= user.nickname %>" role="button" aria-expanded="false" aria-controls="multiCollapse<%= user.nickname %>"><span><%= user.nickname %></span></a>
+                <a class="player-button-<%= user.user.color %>" style="text-decoration: none;" data-toggle="collapse" href="#multiCollapse<%= user.nickname %>" role="button" aria-expanded="false" aria-controls="multiCollapse<%= user.nickname %>"><span><%= user.nickname %></span></a>
                 <!-- <span class="player-button-<%= user.user.color %>">  <%= user.nickname %></span></p> -->
               </td>
             <td vertical-align= "middle"><b><%= user.score %></b></td>

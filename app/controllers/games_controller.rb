@@ -6,7 +6,8 @@ class GamesController < ApplicationController
     @rounds = Round.where(game_id: @game.id).where(finished: false)
     @catcolours = ["category-guess-red", "category-guess-purple", "category-guess-blue", "category-guess-yellow"]
     @playercolours = ["in-game-player-button-red", "in-game-player-button-blue", "in-game-player-button-yellow", "in-game-player-button-purple", "in-game-player-button-green"]
-    if @rounds.empty?
+    # if @rounds.empty?
+    if @rounds.length == 2
       redirect_to result_game_path(@game)
       game_finished
     else
