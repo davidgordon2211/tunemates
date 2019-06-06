@@ -32,8 +32,11 @@
         <h5 class="text-center">Players</h5>
         <br>
         <% @game.invited_users.each do |user| %>
-        <p><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p>
+        <table align="center">
+          <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
+          <td vertical-align= "middle"><p style= "margin:0;"><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
         <% end %>
+        </table>
       <% end %>
     </div>
       <div class="ctas">
