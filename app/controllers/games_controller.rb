@@ -35,7 +35,7 @@ class GamesController < ApplicationController
 
   def lobby
     @colours = ["player-button-red", "player-button-blue", "player-button-yellow", "player-button-purple"]
-    @users = User.all
+    @users = User.where.not(id: current_user)
     @user = current_user
     @category1 = Category.where(id: @game.category1_id).first
     @category2 = Category.where(id: @game.category2_id).first
