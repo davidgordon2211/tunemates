@@ -20,12 +20,33 @@
           <tr>
             <td vertical-align= "middle"><b><%= index +1 %></b></td>
             <td vertical-align= "middle"><%= image_tag user.user.photo.url, class: "avatar"%></td>
-            <td vertical-align= "middle"><p style= "margin:0;"><span class="player-button-<%= user.user.color %>"><%= user.nickname %></span></p></td>
+              <td vertical-align= "middle">
+                <a class="player-button-<%= user.user.color %>" data-toggle="collapse" href="#multiCollapse<%= user.nickname %>" role="button" aria-expanded="false" aria-controls="multiCollapse<%= user.nickname %>"><span><%= user.nickname %></span></a>
+                <!-- <span class="player-button-<%= user.user.color %>">  <%= user.nickname %></span></p> -->
+              </td>
             <td vertical-align= "middle"><b><%= user.score %></b></td>
           </tr>
-          <% end %>
+        <% end %>
         </table>
-
+        <% @invited_users.order(score: :desc).each_with_index do |user, index| %>
+            <% user.user.songs[-2..-1].each do |song| %>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse mt-5" id="multiCollapse<%= user.nickname %>">
+                  <div class="results">
+                      <div class="card-song text-left">
+                          <%= image_tag song.photo, size: "30" %>
+                          <div class="card-song-infos">
+                            <h2><%= song.title %> - <%= song.artist %> </h2>
+                            <p><strong><%= song.user.first_name %></strong> chose this for <strong><%= song.category.name %></strong></p>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        <% end %>
         <br>
         <div class="text-center">
           <% if @invited_users.order(score: :desc).first.user != current_user %>
@@ -41,6 +62,9 @@
           <h6>Want to give <%= @invited_users.order(score: :desc).second.nickname%> another chance to beat you? 😉</h6>
           <h6></h6>
           <% end %>
+        </div>
+        <div class="player-results">
+
         </div>
       </div>
       <div class="text-center">
