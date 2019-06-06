@@ -11,7 +11,14 @@ class GamesController < ApplicationController
       game_finished
     else
       @round = @rounds.order(:position).first
-      @users = @game.invited_users
+
+      # previous attempts to show rounds in a random order:
+      # @round = @rounds.order(:created_at).first
+      # @round = @rounds.order(song_id: :desc).first
+      # @round = @rounds.order(:songs_spotify_link_DESC).first
+      # @round = @rounds.order('songs.spotify_link DESC').first
+
+      @users = @game.invited_users.where.not(user_id: current_user)
       @song = Song.where(id: @round.song_id).first
       @category1 = Category.where(id: @game.category1_id).first
       @category2 = Category.where(id: @game.category2_id).first
@@ -128,6 +135,7 @@ class GamesController < ApplicationController
 
   def result
     @invited_users = InvitedUser.where(game: @game)
+    @songs = @game.rounds.map { |e| Song.find(e.song_id) }
   end
 
   private
