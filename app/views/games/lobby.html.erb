@@ -57,12 +57,11 @@
           <h2></h2>
         <% elsif @game.rounds.count == @game.invited_users.count * 2 && @game.rounds.count > 0 %>
           <div>
-            <br>
             <h4 class = "text-center blink_me" style="color: white;">Do not remove this line!</h4>
             <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red mb-2' %></h2>
+            <br>
           </div>
         <% else %>
-            <br>
             <h4 class = "text-center blink_me">Waiting on players to choose their songs...</h4>
             <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'pale-grey' %></h2>
         <% end %>
