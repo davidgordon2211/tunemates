@@ -57,7 +57,7 @@
           <h2></h2>
         <% elsif @game.rounds.count == @game.invited_users.count * 2 && @game.rounds.count > 0 %>
           <div>
-            <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red' %></h2>
+            <h2 class="text-center mt-5"><%= link_to "Start Game", game_path(@game), class: 'button-red mb-2' %></h2>
           </div>
         <% else %>
             <br>
